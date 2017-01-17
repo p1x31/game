@@ -28,7 +28,10 @@ public class KeyInput extends KeyAdapter{
 						temp.setSize(50);
 						handler.addObject(new Missles(temp.x, temp.y, ID.PlayerProjectile, 8));
 					}
-					
+					if (key == KeyEvent.VK_Y){
+						temp.setSize(50);
+						handler.addObject(new Lazer(temp.x, temp.y, ID.PlayerProjectile, 8));
+					}
 				}
 			}
 		}
@@ -50,6 +53,8 @@ public class KeyInput extends KeyAdapter{
 					}if (key == KeyEvent.VK_D){
 						temp.setVelX(0);
 					}if (key == KeyEvent.VK_T){
+						temp.setSize(16);
+					}if (key == KeyEvent.VK_Y){
 						temp.setSize(16);
 					}
 					

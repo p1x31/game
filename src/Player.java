@@ -8,8 +8,15 @@ public class Player extends GameObject{
 		super(x, y, id, size, hp);
 	}
 
-
-
+	
+	public static final int FULL = 1;
+	public static final int INVI = 2;
+	public static final int DOWN = 0;
+	
+	public void changeState(int i){
+		this.objectState = i;
+	}
+	
 	@Override
 	public void tick() {
 

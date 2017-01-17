@@ -1,12 +1,8 @@
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.event.ActionEvent;
 import java.awt.image.BufferStrategy;
 
-import javax.swing.AbstractAction;
-import javax.swing.InputMap;
-import javax.swing.KeyStroke;
 
 
 

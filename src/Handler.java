@@ -11,7 +11,7 @@ public class Handler {
 	public void tick(){
 		for(int i = 0; i < object.size(); i ++){
 			GameObject temp = object.get(i);
-			if (temp.id == ID.Danmaku){
+			if (temp.id == ID.PlayerProjectile){
 				if (temp.expired){
 					object.remove(i);
 				}
