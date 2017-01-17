@@ -7,29 +7,45 @@ import java.awt.image.BufferStrategy;
 
 
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Game.
+ */
 public class Game extends Canvas implements Runnable{
 
-	/**
-	 * 
-	 */
+	/** The Constant serialVersionUID. */
+	//got this for serial warning suspression
 	private static final long serialVersionUID = 1649015221280660791L;
-	/**
-	 * 
-	 */
+	
+	/** The board width. */
 	private static final int width = 640; 
+	
+	/** The board height. */
 	private static final int height = width*9/12;
+	
+	/** The handler. */
 	private Handler handler;
 
 	
+	/** Check if the game is running. */
 	private boolean running = false;
+	
+	/** The thread. */
 	private Thread thread;
 
+	/**
+	 * Start.
+	 */
 	public synchronized void start() {
 		thread = new Thread(this);
 		thread.start();
 		running = true;
 		handler = new Handler();
 	}
+	
+	/**
+	 * Stop.
+	 */
 	public synchronized void stop(){
 		try{
 			thread.join();
@@ -39,6 +55,10 @@ public class Game extends Canvas implements Runnable{
 		}
 		
 	}
+	
+	/* (non-Javadoc)
+	 * @see java.lang.Runnable#run()
+	 */
 	@Override
 	public void run()
     {
@@ -72,6 +92,9 @@ public class Game extends Canvas implements Runnable{
                 stop();
     }
 	
+	/**
+	 * Render.
+	 */
 	private void render() {
 		BufferStrategy bs = this.getBufferStrategy();
 		if (bs == null){
@@ -87,9 +110,18 @@ public class Game extends Canvas implements Runnable{
 		g.dispose();
 		bs.show();
 	}
+	
+	/**
+	 * Tick.
+	 * Handler updates the state of all objects
+	 */
 	private void tick() {
 		handler.tick();
 	}
+	
+	/**
+	 * Instantiates a new game.
+	 */
 	public Game() {
 		handler = new Handler();
 
@@ -103,6 +135,11 @@ public class Game extends Canvas implements Runnable{
 		this.addKeyListener(new KeyInput(handler));
 	}
 
+	/**
+	 * The main method.
+	 *
+	 * @param args the arguments
+	 */
 	public static void main(String[] args) {
 		new Game();
 		

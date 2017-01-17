@@ -4,6 +4,15 @@ import javax.swing.JFrame;
 
 public class Board {
 
+	/**
+	 * Instantiates a new board. JFrame stuff 
+	 * mostly template code
+	 *
+	 * @param width the width
+	 * @param height the height
+	 * @param title the title
+	 * @param game the game
+	 */
 	public Board(int width, int height, String title, Game game) {
 		JFrame frame = new JFrame(title);
 		

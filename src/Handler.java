@@ -4,10 +4,22 @@ import java.util.LinkedList;
 
 
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Handler Class. 
+ * Manages all the Objects
+ */
 public class Handler {
+	
+	/** The object list. */
 	LinkedList<GameObject> object = new LinkedList<GameObject>();
 
 
+	/**
+	 * Tick.
+	 * Updates every object
+	 * If the object is expired, removes from the linked list
+	 */
 	public void tick(){
 		for(int i = 0; i < object.size(); i ++){
 			GameObject temp = object.get(i);
@@ -20,6 +32,11 @@ public class Handler {
 		}
 	}
 	
+	/**
+	 * Render.
+	 *
+	 * @param g the g
+	 */
 	public void render(Graphics g){
 		for(int i = 0; i < object.size(); i ++){
 			GameObject temp = object.get(i);
@@ -27,11 +44,21 @@ public class Handler {
 		}
 	}
 
+	/**
+	 * Adds the object.
+	 *
+	 * @param object the object
+	 */
 	public void addObject(GameObject object){
 		this.object.add(object);
 	}
 	
-	public void removeObeject(GameObject object){
+	/**
+	 * Removes the object.
+	 *
+	 * @param object the object
+	 */
+	public void removeObject(GameObject object){
 		this.object.remove(object);
 	}
 

@@ -26,17 +26,30 @@ public class KeyInput extends KeyAdapter{
 						temp.setVelX(5);
 					}if (key == KeyEvent.VK_T){
 						temp.setSize(50);
-						handler.addObject(new Missles(temp.x, temp.y, ID.PlayerProjectile, 8));
+						handler.addObject(new Missile(temp.x, temp.y, 8));
 					}
 					if (key == KeyEvent.VK_Y){
 						temp.setSize(50);
-						handler.addObject(new Lazer(temp.x, temp.y, ID.PlayerProjectile, 8));
+						handler.addObject(new Lazer(temp.x, temp.y, 8));
 					}
 				}
 			}
 		}
 		
-	
+	public void keyTyped(KeyEvent e){
+		int key = e.getKeyCode();
+		for(int i = 0; i < handler.object.size(); i++){
+			GameObject temp = handler.object.get(i);
+			if (temp.getId() == ID.Player1){
+				if (key == KeyEvent.VK_Y){
+					temp.setSize(50);
+					handler.addObject(new Lazer(temp.x, temp.y, 8));
+				
+				}
+			}
+		}
+		
+	}
 	
 	public void keyReleased(KeyEvent e){
 		int key = e.getKeyCode();
