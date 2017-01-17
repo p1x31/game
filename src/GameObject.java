@@ -80,7 +80,10 @@ public abstract class GameObject{
 		return size;
 	}
 
-
+	public void damageCheck(int projX, int projY){
+		if(((projX - x) < size) &&((projY - y) < size))
+		this.healthPoint --;
+	}
 	/**
 	 * Sets the size.
 	 *
