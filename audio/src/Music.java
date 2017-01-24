@@ -7,8 +7,9 @@ import java.net.URL;
  
 public class Music extends Frame{
 	
-    //public static String audioPath = System.getProperty("/Users/yiliu/Documents/BHAM/Year2/Semester2/TeamProject/audio/");
-	public static String audioPath = "/Users/yiliu/Documents/BHAM/Year2/Semester2/TeamProject/audio/";
+
+	//Change the audioPath before the test !
+	public static String audioPath = "/Users/yiliu/Documents/BHAM/Year2/Semester2/TeamProject/audio/";	
     public Music(){
     /*try {
     		System.out.println("Playing");
@@ -34,11 +35,7 @@ public class Music extends Frame{
     	try{
     		System.out.println("Playing");
             URL cb;
-            //File f = new File(imagePath+"mario.midi");
-            //File f = new File(imagePath+"1000.ogg");
-            //File f = new File(imagePath+"Passenger.mp3");
-            File f = new File("/Users/yiliu/Documents/BHAM/Year2/Semester2/TeamProject/audio/cash_register.wav");
-            //File f = new File("/Users/yiliu/Documents/BHAM/1.wav");
+            File f = new File(audioPath + "cash_register.wav");
             cb = f.toURL();
             AudioClip aau;
             aau = Applet.newAudioClip(cb);
@@ -70,11 +67,7 @@ public class Music extends Frame{
     	try{
     		System.out.println("Playing");
             URL cb;
-            //File f = new File(imagePath+"mario.midi");
-            //File f = new File(imagePath+"1000.ogg");
-            //File f = new File(imagePath+"Passenger.mp3");
             File f = new File(audioPath + "score_board.wav");
-            //File f = new File("/Users/yiliu/Documents/BHAM/1.wav");
             cb = f.toURL();
             AudioClip aau;
             aau = Applet.newAudioClip(cb);

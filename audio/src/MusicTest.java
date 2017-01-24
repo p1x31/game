@@ -1,9 +1,11 @@
 import java.awt.Toolkit;
+//import audio.*;
 
 public class MusicTest {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+
+		
 		//java.awt.Toolkit.getDefaultToolkit().beep(); 
 		//java.awt.Toolkit.getDefaultToolkit().beep(); 
 		//java.awt.Toolkit.getDefaultToolkit().beep();        
@@ -12,19 +14,22 @@ public class MusicTest {
 		{
 		Toolkit.getDefaultToolkit().beep();
 		}*/
-		//Music test = new Music();
-		//test.play();
-		//Music.play();
-		
-		//Music.money();
-		//Music m = new Music();
-		//m.cash_register();
 		
 		
-		//m.score_board_music();
+		/*
+		 * Change the audioPath in Music.java before the test.
+		 * 
+		 * Select one of below to test the sounds.
+		 * Two or more seletions will be playing together.
+		 * 
+		 * Use one of below and put it at where you need.(Make sure import this package in your classes) 
+		 *
+		 */
+		
 		
 		//Music.score_board();
 		Music.cash_register();
+		//Audio.cash_register();
 		//Music.potwak();
 		//Music.score_board_music();
 		//Music.score_board();
