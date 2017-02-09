@@ -1,4 +1,5 @@
 import java.awt.Graphics;
+import java.awt.Rectangle;
 import java.util.LinkedList;
 
 
@@ -12,14 +13,13 @@ import java.util.LinkedList;
 public class Handler {
 	
 	/** The object list. */
-	LinkedList<GameObject> object = new LinkedList<GameObject>();
+	static LinkedList<GameObject> object = new LinkedList<GameObject>();
 	/**
 	 * Tick.
 	 * Updates every object
 	 * If the object is expired, removes from the linked list
 	 */
 	public void tick(){
-	
 		
 		for(int i = 0; i < object.size(); i ++){
 			GameObject temp = object.get(i);
@@ -37,7 +37,7 @@ public class Handler {
 				if (temp.expired){
 					object.remove(i);
 				}
-			temp.tick();
+			temp.tick(object);
 			
 		}
 	}
@@ -71,5 +71,7 @@ public class Handler {
 	public void removeObject(GameObject object){
 		this.object.remove(object);
 	}
+	
+
 
 }

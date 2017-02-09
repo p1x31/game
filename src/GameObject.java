@@ -1,4 +1,6 @@
 import java.awt.Graphics;
+import java.awt.Rectangle;
+import java.util.LinkedList;
 
 
 
@@ -163,7 +165,7 @@ public abstract class GameObject{
 	/**
 	 * Tick.
 	 */
-	public abstract void tick();
+	public abstract void tick(LinkedList<GameObject> object);
 	
 	/**
 	 * Render.
@@ -172,6 +174,7 @@ public abstract class GameObject{
 	 */
 	public abstract void render(Graphics g);
 	
+	public abstract Rectangle getBounds();
 	/**
 	 * Gets the x.
 	 *

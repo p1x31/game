@@ -1,5 +1,7 @@
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Rectangle;
+import java.util.LinkedList;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -25,7 +27,7 @@ public class Lazer extends GameObject {
 	 * @see GameObject#tick()
 	 */
 	@Override
-	public void tick() {
+	public void tick(LinkedList<GameObject> object) {
 		temp ++; // counts how long the lazer lasts for
 		expired = temp > 10 ? true: false; // deletes the lazer after 10 frames
 	}
@@ -38,6 +40,10 @@ public class Lazer extends GameObject {
 		g.setColor(Color.white);
 		g.fillRoundRect(x, 0 , 30, y, 10, 10); // lazer shoots from the character to the edge of the board
 		
+	}
+	
+	public Rectangle getBounds() {
+		return new Rectangle(x, y, size, size);
 	}
 
 }

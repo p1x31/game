@@ -1,5 +1,7 @@
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Rectangle;
+import java.util.LinkedList;
 
 
 // TODO: Auto-generated Javadoc
@@ -44,13 +46,14 @@ public class Player extends GameObject{
 	 * @see GameObject#tick()
 	 */
 	@Override
-	public void tick() {
+	public void tick(LinkedList<GameObject> object) {
 		// position moves according to velocity
 		x += velX;
 		y += velY;
 		
 		// when healthPoint is 0 remove/gameover
 		expired = healthPoint == 0 ? true : false;
+		Collision(object);
 	}
 		
 		/* (non-Javadoc)
@@ -67,5 +70,47 @@ public class Player extends GameObject{
 			//players represented by small squares
 		g.fillRect(x - size/2, y - size/2, size, size);
 	}
+
+		private void Collision(LinkedList<GameObject> object){
+		    for(int i=0; i<Handler.object.size();i++){
+		        GameObject temp = Handler.object.get(i);
+		        if(temp.getId() == ID.Enemy){
+		            if(getBoundsTop().intersects(temp.getBounds())){
+		                y= temp.getY()- 32;
+		                velY=0;
+		            }
+		                if(getBounds().intersects(temp.getBounds())){
+		                    velY=0;
+		                    y= temp.getY();
+		                }
+		                //Right
+		                if(getBoundsRight().intersects(temp.getBounds())){
+		                    x = temp.getX();
+		                    velX = 0;
+		                }
+
+		                //Left
+		                if(getBoundsLeft().intersects(temp.getBounds())){
+		                x = temp.getX() - 2*size;
+		                }
+		    }
+		    }
+		}
+		@Override
+	    public Rectangle getBounds() {
+	        return new Rectangle(x, y, size, size);
+	    }
+	    
+	    public Rectangle getBoundsTop() {
+	        return new Rectangle(x+size, y, size, size);
+	    }
+	    
+	    public Rectangle getBoundsRight() {
+	        return new Rectangle(x-5, y, size, size);
+	    }
+	    
+	    public Rectangle getBoundsLeft() {
+	        return new Rectangle(x+5, y, size, size);
+	    }
 
 }

@@ -1,5 +1,7 @@
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Rectangle;
+import java.util.LinkedList;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -27,7 +29,7 @@ public class Missile extends GameObject{
 	 * @see GameObject#tick()
 	 */
 	@Override
-	public void tick() {
+	public void tick(LinkedList<GameObject> object) {
 		//x
 		y += velY; // Traveling speed of missile
 		expired = y < 0 ? true: false; //removes missle if it reaches edge
@@ -43,4 +45,7 @@ public class Missile extends GameObject{
 		
 	}
 
+	public Rectangle getBounds() {
+		return new Rectangle(x, y, size, size);
+	}
 }
