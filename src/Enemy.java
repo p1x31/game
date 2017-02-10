@@ -1,5 +1,6 @@
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Rectangle;
 
 public class Enemy extends GameObject {
 
@@ -39,6 +40,12 @@ public class Enemy extends GameObject {
 	public void render(Graphics g) {
 		g.setColor(Color.green);
 		g.fillRect(x - size /2, y - size/2, size, size);
+	}
+
+	@Override
+	public Rectangle getBounds() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

@@ -17,22 +17,25 @@ public class Handler {
 	/** The board height. */
 	private static final int height = width*9/12;
 	/** The object list. */
+
 	private Stage stage;
 	private Boolean existEnemy;
 	LinkedList<GameObject> object = new LinkedList<GameObject>();
+
+
+
 	/**
 	 * Tick.
 	 * Updates every object
 	 * If the object is expired, removes from the linked list
 	 */
+
 	
 	
 	public Handler(){
 		this.initialize();
-		
-		
-
 	}
+
 	public void tick(){
 	
 		existEnemy = false;
@@ -66,10 +69,11 @@ public class Handler {
 				if (temp.expired){
 					object.remove(i);
 				}
+
 			
 			
 			temp.tick();
-			
+	
 		}	
 		if (!existEnemy){
 			stage.nextStage();
@@ -99,6 +103,7 @@ public class Handler {
 		this.object.add(object);
 	}
 	
+	
 	/**
 	 * Removes the object.
 	 *
@@ -108,10 +113,14 @@ public class Handler {
 		this.object.remove(object);
 	}
 	
+
 	public void initialize(){
 		this.addObject(new Player(width/4, height*11/16, ID.Player,16, 5, 1));
 		this.addObject(new Player(width*3/4, height*11/16, ID.Player,16, 3, 2));
 		
 		stage = new Stage(this);
 	}
+
+
+
 }

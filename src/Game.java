@@ -2,6 +2,8 @@ import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
+import java.util.ArrayList;
+import java.util.LinkedList;
 
 
 
@@ -33,6 +35,9 @@ public class Game extends Canvas implements Runnable{
 	/** The thread. */
 	private Thread thread;
 
+	/**Enemy list*/
+	public ArrayList<Enemy> list;
+	
 	/**
 	 * Start.
 	 */
@@ -131,7 +136,6 @@ public class Game extends Canvas implements Runnable{
 //		Player player2 = new Player(width*3/4, height*11/16, ID.Player2,16);
 
 		this.addKeyListener(new KeyInput(handler));
-		
 	}
 
 	/**

@@ -1,5 +1,7 @@
+
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Rectangle;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -38,6 +40,12 @@ public class Lazer extends GameObject {
 		g.setColor(Color.white);
 		g.fillRoundRect(x - 15, 0 , 30, y, 10, 10); // lazer shoots from the character to the edge of the board
 		
+	}
+
+	@Override
+	public Rectangle getBounds() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

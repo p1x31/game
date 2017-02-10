@@ -1,5 +1,7 @@
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Rectangle;
+import java.util.LinkedList;
 
 
 // TODO: Auto-generated Javadoc
@@ -61,6 +63,7 @@ public class Player extends GameObject{
 		
 		// when healthPoint is 0 remove/gameover
 		expired = healthPoint == 0 ? true : false;
+//		Collision(object);
 	}
 		
 		/* (non-Javadoc)
@@ -74,8 +77,25 @@ public class Player extends GameObject{
 		} else if (this.noPlayer == 2){
 			g.setColor(Color.red);
 		}
-			//players represented by small squares
+		//players represented by small squares
 		g.fillRect(x - size/2, y - size/2, size, size);
 	}
 
+//		private void Collision(LinkedList<GameObject> object){
+//		    for(int i=0; i<Handler.object.size();i++){
+//		        GameObject temp = Handler.object.get(i);
+//		        if(temp.getId() == ID.Enemy){
+//		                if(getBounds().intersects(temp.getBounds())){
+//		                	System.out.println("Collision");
+//		                    //velY=0;
+//		                    //y= temp.getY();
+//		                	expired = true;
+//		                }
+//		    }
+//		    }
+//		}
+		@Override
+	    public Rectangle getBounds() {
+	        return new Rectangle(x, y, size, size);
+	    }
 }
