@@ -33,8 +33,23 @@ public class Missile extends GameObject{
 		//x
 		y += velY; // Traveling speed of missile
 		expired = y < 0 ? true: false; //removes missle if it reaches edge
+		CollisionWithEnemy(object);
 	}
 	
+	private void CollisionWithEnemy(LinkedList<GameObject> object){
+	    for(int i=0; i<Handler.object.size();i++){
+	        GameObject temp = Handler.object.get(i);
+	        if(temp.getId() == ID.Enemy){
+	                if(getBounds().intersects(temp.getBounds())){
+	                	System.out.println("£¿");
+	                    //velY=0;
+	                    //y= temp.getY();
+	                	expired = true;
+	                }
+	                
+	    }
+	    }
+	}
 	/* (non-Javadoc)
 	 * @see GameObject#render(java.awt.Graphics)
 	 */
