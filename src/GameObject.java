@@ -80,9 +80,13 @@ public abstract class GameObject{
 		return size;
 	}
 
-	public void damageCheck(int projX, int projY){
-		if(((projX - x) < size) &&((projY - y) < size))
+	public boolean damageCheck(int projX, int projY, int projSize){
+		if((Math.abs(projX - this.x) < (size + projSize/2) &&
+				(Math.abs(projY - this.y) < (size+projSize)/2))){
 		this.healthPoint --;
+		return true;
+		}
+		return false;
 	}
 	/**
 	 * Sets the size.
@@ -115,7 +119,7 @@ public abstract class GameObject{
 	 * Gets the velocity Y.
 	 *
 	 * @return the velocity Y
-	 */
+	 */ 
 	public int getVelY() {
 		return velY;
 	}

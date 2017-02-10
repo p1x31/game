@@ -36,7 +36,7 @@ public class Lazer extends GameObject {
 	@Override
 	public void render(Graphics g) {
 		g.setColor(Color.white);
-		g.fillRoundRect(x, 0 , 30, y, 10, 10); // lazer shoots from the character to the edge of the board
+		g.fillRoundRect(x - 15, 0 , 30, y, 10, 10); // lazer shoots from the character to the edge of the board
 		
 	}
 

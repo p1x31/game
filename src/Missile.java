@@ -30,7 +30,10 @@ public class Missile extends GameObject{
 	public void tick() {
 		//x
 		y += velY; // Traveling speed of missile
-		expired = y < 0 ? true: false; //removes missle if it reaches edge
+
+		expired = y < 0 || healthPoint < 0? true: false; //removes missle if it reaches edge
+
+
 	}
 	
 	/* (non-Javadoc)
@@ -39,7 +42,7 @@ public class Missile extends GameObject{
 	@Override
 	public void render(Graphics g) {
 		g.setColor(Color.green);
-		g.fillRoundRect(x, y, size, size, 5, 5);
+		g.fillRoundRect(x - size/2, y - size/2, size, size, 5, 5);
 		
 	}
 

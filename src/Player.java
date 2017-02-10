@@ -17,8 +17,18 @@ public class Player extends GameObject{
 	 * @param size the size
 	 * @param hp the health point
 	 */
-	public Player(int x, int y, ID id, int size, int hp) {
+	private int noPlayer;
+	public Player(int x, int y, ID id, int size, int hp, int noPlayer) {
 		super(x, y, id, size, hp);
+		this.noPlayer = noPlayer;
+	}
+
+	public int getNoPlayer() {
+		return noPlayer;
+	}
+
+	public void setNoPlayer(int noPlayer) {
+		this.noPlayer = noPlayer;
 	}
 
 	// Object states for graphics
@@ -59,9 +69,9 @@ public class Player extends GameObject{
 		@Override
 	public void render(Graphics g) {
 			// simple player differences 
-		if(id == ID.Player1){
+		if(this.noPlayer == 1){
 			g.setColor(Color.blue);
-		} else if (id == ID.Player2){
+		} else if (this.noPlayer == 2){
 			g.setColor(Color.red);
 		}
 			//players represented by small squares

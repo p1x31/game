@@ -13,41 +13,33 @@ public class KeyInput extends KeyAdapter{
 		System.out.println(handler.object.size());
 		for (int i = 0; i < handler.object.size(); i++){
 			GameObject temp = handler.object.get(i);
-				if (temp.getId() == ID.Player1){
-					System.out.println("hi");
+				if (temp.getId() == ID.Player){
+					Player tempPlayer = (Player) temp;
+					if (tempPlayer.getNoPlayer() == 1){
 					if (key == KeyEvent.VK_W){
-						temp.setVelY(-5);
+						tempPlayer.setVelY(-5);
 					}
 					if (key == KeyEvent.VK_S){
-						temp.setVelY(5);
+						tempPlayer.setVelY(5);
 					}if (key == KeyEvent.VK_A){
-						temp.setVelX(-5);
+						tempPlayer.setVelX(-5);
 					}if (key == KeyEvent.VK_D){
-						temp.setVelX(5);
+						tempPlayer.setVelX(5);
 					}if (key == KeyEvent.VK_T){
-						temp.setSize(50);
+						tempPlayer.setSize(50);
 						handler.addObject(new Missile(temp.x, temp.y, 8));
 					}
 					if (key == KeyEvent.VK_Y){
-						temp.setSize(50);
+						tempPlayer.setSize(50);
 						handler.addObject(new Lazer(temp.x, temp.y, 8));
+					}
 					}
 				}
 			}
 		}
 		
 	public void keyTyped(KeyEvent e){
-		int key = e.getKeyCode();
-		for(int i = 0; i < handler.object.size(); i++){
-			GameObject temp = handler.object.get(i);
-			if (temp.getId() == ID.Player1){
-				if (key == KeyEvent.VK_Y){
-					temp.setSize(50);
-					handler.addObject(new Lazer(temp.x, temp.y, 8));
-				
-				}
-			}
-		}
+		
 		
 	}
 	
@@ -55,7 +47,9 @@ public class KeyInput extends KeyAdapter{
 		int key = e.getKeyCode();
 		for (int i = 0; i < handler.object.size(); i++){
 			GameObject temp = handler.object.get(i);
-				if (temp.getId() == ID.Player1){
+				if (temp.getId() == ID.Player){
+					Player tempPlayer = (Player) temp;
+					if (tempPlayer.getNoPlayer() == 1){
 					if (key == KeyEvent.VK_W){
 						temp.setVelY(0);
 					}
@@ -70,7 +64,7 @@ public class KeyInput extends KeyAdapter{
 					}if (key == KeyEvent.VK_Y){
 						temp.setSize(16);
 					}
-					
+					}
 				}
 			}
 	}

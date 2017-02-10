@@ -4,16 +4,14 @@ import java.awt.Graphics;
 public class Enemy extends GameObject {
 
 	
-
+	int counter;
 	public Enemy(int x, int y, int size, int hp) {
 		super(x, y, ID.Enemy, size, hp);
-		velX = 0;
+		velX = 3;
+		velY = 3;
 		//velY = 20;
 	}
-	public void damageCheck(int projX, int projY){
-		if(((projX - x) < size) &&((projY - y) < size))
-		this.healthPoint --;
-	}
+
 	@Override
 	public void tick() {
 		x += velX;
@@ -21,9 +19,20 @@ public class Enemy extends GameObject {
 		if ((x < 20) || (x > 620)){
 			velX = -velX;
 		}	
+		if ((y < 10) || (y > 210)){
+			velY = - velY;
+		}
+		counter ++;
+		if (counter > 20){
+			shoot();
+			counter = 0;
+		}
+		expired = healthPoint < 0 ;
 		
-		expired = healthPoint == 0 ;
-		
+	}
+
+	private boolean shoot() {
+		return true;
 	}
 
 	@Override

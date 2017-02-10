@@ -130,11 +130,8 @@ public class Game extends Canvas implements Runnable{
 //		Player player1 = new Player(width/4, height*11/16, ID.Player1,16);
 //		Player player2 = new Player(width*3/4, height*11/16, ID.Player2,16);
 
-		handler.addObject(new Player(width/4, height*11/16, ID.Player1,16, 5));
-		handler.addObject(new Player(width*3/4, height*11/16, ID.Player2,16, 3));
 		this.addKeyListener(new KeyInput(handler));
 		
-		handler.addObject(new Enemy(width /2, height *3/16, 64, 3));
 	}
 
 	/**
