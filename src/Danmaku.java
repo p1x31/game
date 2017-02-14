@@ -22,7 +22,7 @@ public class Danmaku extends GameObject{
 	 * @param size the size
 	 */
 	public Danmaku(int x, int y, int size, int hp) {
-		super(x, y, ID.PlayerProjectile, size, 1);
+		super(x, y, ID.Danmaku, size, hp);
 		// TODO Auto-generated constructor stub
 		this.velY =5;
 	}
@@ -34,7 +34,7 @@ public class Danmaku extends GameObject{
 	public void tick() {
 		//x
 		y += velY; // Traveling speed of missile
-		expired = y < 480 || healthPoint < 0; //removes missle if it reaches edge
+		expired = y > 1000 || healthPoint < 0; //removes missle if it reaches edge
 	}
 	
 	/* (non-Javadoc)
@@ -42,7 +42,7 @@ public class Danmaku extends GameObject{
 	 */
 	@Override
 	public void render(Graphics g) {
-		g.setColor(Color.green);
+		g.setColor(Color.white);
 		g.fillRoundRect(x - size /2 , y - size /2, size, size, 5, 5);
 		
 	}

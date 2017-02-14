@@ -17,13 +17,14 @@ public class Stage {
 	public void nextStage(){
 		for (int i = 0; i < stage; i ++){
 			Random ran = new Random();
-			int x = ran.nextInt(600);
-			int y = ran.nextInt(210);
-			handler.addObject(new Enemy(20 + x, 10 + y, 16, 3));
-			System.out.println("Stage " + stage);
+			int x = ran.nextInt(1560);
+			int y = ran.nextInt(500);
+			handler.addObject(new Enemy(20 + x, 10 + y, 16, 3, handler));
 		}
 		System.out.println("Stage " + stage);
 		stage ++;
 	}
-	
+	public void gameover(){
+		System.out.println("Game Over");
+	}
 }

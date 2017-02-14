@@ -12,7 +12,7 @@ import java.util.LinkedList;
 
 public class Handler {
 	/** The board width. */
-	private static final int width = 640; 
+	private static final int width = 1600; 
 	
 	/** The board height. */
 	private static final int height = width*9/12;
@@ -20,6 +20,7 @@ public class Handler {
 
 	private Stage stage;
 	private Boolean existEnemy;
+	private Boolean alive;
 	LinkedList<GameObject> object = new LinkedList<GameObject>();
 
 
@@ -33,14 +34,17 @@ public class Handler {
 	
 	
 	public Handler(){
-		this.initialize();
+
 	}
 
 	public void tick(){
-	
+		
 		existEnemy = false;
+		alive = false;
+		System.out.println(object.size());
 		for(int i = 0; i < object.size(); i ++){
 			GameObject temp = object.get(i);
+			
 			
 			
 				//attempt of damaging enemy
@@ -48,19 +52,22 @@ public class Handler {
 					existEnemy = true;
 					for(int j = 0; j < object.size(); j++){
 						if ((object.get(j).id != ID.Enemy) && (object.get(j).id != ID.Danmaku)){
-							if (temp.damageCheck(object.get(j).getX(), object.get(j).getY(), object.get(j).getSize())){
+							
 							object.get(j).damageCheck(temp.getX(), temp.getY(), temp.getSize());
-							}
+							temp.damageCheck(object.get(j).getX(), object.get(j).getY(), object.get(j).getSize());
+							
+							
 						}
 					}
 				}
 				
 				if (temp.id == ID.Player){
+					alive = true;
 					for(int j = 0; j < object.size(); j++){
 						if ((object.get(j).id == ID.Danmaku) || (object.get(j).id == ID.Enemy)){
-							if (temp.damageCheck(object.get(j).getX(), object.get(j).getY(), object.get(j).getSize())){
+							temp.damageCheck(object.get(j).getX(), object.get(j).getY(), object.get(j).getSize());
 							object.get(j).damageCheck(temp.getX(), temp.getY(), temp.getSize());
-							}
+							
 						}
 					}
 				}
@@ -71,15 +78,19 @@ public class Handler {
 				}
 
 			
-			
 			temp.tick();
 	
 		}	
 		if (!existEnemy){
 			stage.nextStage();
+		}
+		if (!alive){
+			while(object.size() > 0){
+				object.remove(0);
+			}
+			stage.gameover();
 			
 		}
-		
 	}
 	
 	/**
@@ -114,7 +125,13 @@ public class Handler {
 	}
 	
 
-	public void initialize(){
+	public void singleInit(){
+		this.addObject(new Player(width/4, height*11/16, ID.Player,16, 5, 1));
+	//	this.addObject(new Player(width*3/4, height*11/16, ID.Player,16, 3, 2));
+		
+		stage = new Stage(this);
+	}
+	public void multiInit(){
 		this.addObject(new Player(width/4, height*11/16, ID.Player,16, 5, 1));
 		this.addObject(new Player(width*3/4, height*11/16, ID.Player,16, 3, 2));
 		

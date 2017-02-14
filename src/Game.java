@@ -20,10 +20,10 @@ public class Game extends Canvas implements Runnable{
 	private static final long serialVersionUID = 1649015221280660791L;
 	
 	/** The board width. */
-	private static final int width = 640; 
+	private static int width = 1600; 
 	
 	/** The board height. */
-	private static final int height = width*9/12;
+	private static int height = 1000;
 	
 	/** The handler. */
 	private Handler handler;
@@ -127,7 +127,9 @@ public class Game extends Canvas implements Runnable{
 	/**
 	 * Instantiates a new game.
 	 */
-	public Game() {
+	public Game(int width, int height) {
+		this.width = width;
+		this.height = height;
 		handler = new Handler();
 
 		new Board(width, height, "TPA", this);
@@ -138,15 +140,20 @@ public class Game extends Canvas implements Runnable{
 		this.addKeyListener(new KeyInput(handler));
 	}
 
+	public Handler getHandler(){
+		return this.handler;
+	}
+	
+	
 	/**
 	 * The main method.
 	 *
 	 * @param args the arguments
 	 */
-	public static void main(String[] args) {
-		new Game();
-		
-	}
+//	public static void main(String[] args) {
+//		new Game();
+//		
+//	}
 	
 
 	

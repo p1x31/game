@@ -26,11 +26,11 @@ public class KeyInput extends KeyAdapter{
 					}if (key == KeyEvent.VK_D){
 						tempPlayer.setVelX(5);
 					}if (key == KeyEvent.VK_T){
-						tempPlayer.setSize(50);
+				
 						handler.addObject(new Missile(temp.x, temp.y, 8));
 					}
 					if (key == KeyEvent.VK_Y){
-						tempPlayer.setSize(50);
+
 						handler.addObject(new Lazer(temp.x, temp.y, 8));
 					}
 					}

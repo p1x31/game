@@ -17,11 +17,15 @@ import java.awt.Panel;
 public class menu {
 
 	private JFrame frame;
+	private Game game;
+	private int width = 1600;
+	private int height = 1000;
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
 					menu window = new menu();
+				
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -35,9 +39,11 @@ public class menu {
 	}
 
 	private void initialize() {
+
 		frame = new JFrame("D4 Game");
 		frame.getContentPane().setBackground(new Color(51, 51, 51));
-		frame.setBounds( 0, 0, 1600, 1000);
+		frame.setBounds( 0, 0, width, height);
+	
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setResizable(false);
 		frame.getContentPane().setLayout(new BorderLayout(0, 0));
@@ -49,10 +55,12 @@ public class menu {
 		
 		Panel panel = new Panel();
 		frame.getContentPane().add(panel, BorderLayout.CENTER);
-		
 		JButton btnSinglePlayer = new JButton("Single Player");
 		btnSinglePlayer.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				game = new Game(width, height);
+				game.getHandler().singleInit();
+
 			}
 		});
 		panel.add(btnSinglePlayer);
@@ -60,6 +68,9 @@ public class menu {
 		JButton btnMultiplayer = new JButton("Multiplayer");
 		btnMultiplayer.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				game = new Game(width, height);
+				game.getHandler().multiInit();
+
 			}
 		});
 		panel.add(btnMultiplayer);
@@ -70,6 +81,7 @@ public class menu {
 			}
 		});
 		panel.add(btnOptions);
+
 	}
 	
 	public static void centreWindow(Window frame) {

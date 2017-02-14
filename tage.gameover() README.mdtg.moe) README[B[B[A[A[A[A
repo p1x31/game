@@ -1,0 +1,347 @@
+[1mdiff --git a/src/Danmaku.java b/src/Danmaku.java[m
+[1mindex 3b83a8c..fd0cee0 100644[m
+[1m--- a/src/Danmaku.java[m
+[1m+++ b/src/Danmaku.java[m
+[36m@@ -22,7 +22,7 @@[m [mpublic class Danmaku extends GameObject{[m
+ 	 * @param size the size[m
+ 	 */[m
+ 	public Danmaku(int x, int y, int size, int hp) {[m
+[31m-		super(x, y, ID.PlayerProjectile, size, 1);[m
+[32m+[m		[32msuper(x, y, ID.Danmaku, size, hp);[m
+ 		// TODO Auto-generated constructor stub[m
+ 		this.velY =5;[m
+ 	}[m
+[36m@@ -34,7 +34,7 @@[m [mpublic class Danmaku extends GameObject{[m
+ 	public void tick() {[m
+ 		//x[m
+ 		y += velY; // Traveling speed of missile[m
+[31m-		expired = y < 480 || healthPoint < 0; //removes missle if it reaches edge[m
+[32m+[m		[32mexpired = y > 1000 || healthPoint < 0; //removes missle if it reaches edge[m
+ 	}[m
+ 	[m
+ 	/* (non-Javadoc)[m
+[36m@@ -42,7 +42,7 @@[m [mpublic class Danmaku extends GameObject{[m
+ 	 */[m
+ 	@Override[m
+ 	public void render(Graphics g) {[m
+[31m-		g.setColor(Color.green);[m
+[32m+[m		[32mg.setColor(Color.white);[m
+ 		g.fillRoundRect(x - size /2 , y - size /2, size, size, 5, 5);[m
+ 		[m
+ 	}[m
+[1mdiff --git a/src/Enemy.java b/src/Enemy.java[m
+[1mindex 1f6eeba..aacf262 100644[m
+[1m--- a/src/Enemy.java[m
+[1m+++ b/src/Enemy.java[m
+[36m@@ -6,34 +6,38 @@[m [mpublic class Enemy extends GameObject {[m
+ [m
+ 	[m
+ 	int counter;[m
+[31m-	public Enemy(int x, int y, int size, int hp) {[m
+[32m+[m	[32mprivate Handler handler;[m
+[32m+[m	[32mpublic Enemy(int x, int y, int size, int hp, Handler handler) {[m
+ 		super(x, y, ID.Enemy, size, hp);[m
+ 		velX = 3;[m
+ 		velY = 3;[m
+ 		//velY = 20;[m
+[32m+[m		[32mthis.handler = handler;[m
+ 	}[m
+ [m
+ 	@Override[m
+ 	public void tick() {[m
+ 		x += velX;[m
+ 		y += velY;[m
+[31m-		if ((x < 20) || (x > 620)){[m
+[32m+[m		[32mif ((x < 20) || (x > 1580)){[m
+ 			velX = -velX;[m
+ 		}	[m
+[31m-		if ((y < 10) || (y > 210)){[m
+[32m+[m		[32mif ((y < 10) || (y > 510)){[m
+ 			velY = - velY;[m
+ 		}[m
+ 		counter ++;[m
+[31m-		if (counter > 20){[m
+[32m+[m[41m		[m
+[32m+[m		[32mif (counter % 20 == 0){[m
+ 			shoot();[m
+ 			counter = 0;[m
+[32m+[m[41m		[m
+ 		}[m
+ 		expired = healthPoint < 0 ;[m
+ 		[m
+ 	}[m
+ [m
+[31m-	private boolean shoot() {[m
+[31m-		return true;[m
+[32m+[m	[32mprivate void shoot() {[m
+[32m+[m		[32mhandler.addObject(new Danmaku(this.x, this.y, 5, 1));[m
+ 	}[m
+ [m
+ 	@Override[m
+[1mdiff --git a/src/Game.java b/src/Game.java[m
+[1mindex 9194817..2d40d4d 100644[m
+[1m--- a/src/Game.java[m
+[1m+++ b/src/Game.java[m
+[36m@@ -20,10 +20,10 @@[m [mpublic class Game extends Canvas implements Runnable{[m
+ 	private static final long serialVersionUID = 1649015221280660791L;[m
+ 	[m
+ 	/** The board width. */[m
+[31m-	private static final int width = 640; [m
+[32m+[m	[32mprivate static int width = 640;[m[41m [m
+ 	[m
+ 	/** The board height. */[m
+[31m-	private static final int height = width*9/12;[m
+[32m+[m	[32mprivate static int height = width*9/12;[m[41m[m
+ 	[m
+ 	/** The handler. */[m
+ 	private Handler handler;[m
+[36m@@ -127,7 +127,9 @@[m [mpublic class Game extends Canvas implements Runnable{[m
+ 	/**[m
+ 	 * Instantiates a new game.[m
+ 	 */[m
+[31m-	public Game() {[m
+[32m+[m	[32mpublic Game(int width, int height) {[m[41m[m
+[32m+[m		[32mthis.width = width;[m[41m[m
+[32m+[m		[32mthis.height = height;[m[41m[m
+ 		handler = new Handler();[m
+ [m
+ 		new Board(width, height, "TPA", this);[m
+[36m@@ -138,15 +140,20 @@[m [mpublic class Game extends Canvas implements Runnable{[m
+ 		this.addKeyListener(new KeyInput(handler));[m
+ 	}[m
+ [m
+[32m+[m	[32mpublic Handler getHandler(){[m[41m[m
+[32m+[m		[32mreturn this.handler;[m[41m[m
+[32m+[m	[32m}[m[41m[m
+[32m+[m[41m	[m
+[32m+[m[41m	[m
+ 	/**[m
+ 	 * The main method.[m
+ 	 *[m
+ 	 * @param args the arguments[m
+ 	 */[m
+[31m-	public static void main(String[] args) {[m
+[31m-		new Game();[m
+[31m-		[m
+[31m-	}[m
+[32m+[m[32m//	public static void main(String[] args) {[m[41m[m
+[32m+[m[32m//		new Game();[m[41m[m
+[32m+[m[32m//[m[41m		[m
+[32m+[m[32m//	}[m[41m[m
+ 	[m
+ [m
+ 	[m
+[1mdiff --git a/src/Handler.java b/src/Handler.java[m
+[1mindex 0be4f99..c3aae35 100644[m
+[1m--- a/src/Handler.java[m
+[1m+++ b/src/Handler.java[m
+[36m@@ -12,7 +12,7 @@[m [mimport java.util.LinkedList;[m
+ [m
+ public class Handler {[m
+ 	/** The board width. */[m
+[31m-	private static final int width = 640; [m
+[32m+[m	[32mprivate static final int width = 1600;[m[41m [m
+ 	[m
+ 	/** The board height. */[m
+ 	private static final int height = width*9/12;[m
+[36m@@ -20,6 +20,7 @@[m [mpublic class Handler {[m
+ [m
+ 	private Stage stage;[m
+ 	private Boolean existEnemy;[m
+[32m+[m	[32mprivate Boolean alive;[m[41m[m
+ 	LinkedList<GameObject> object = new LinkedList<GameObject>();[m
+ [m
+ [m
+[36m@@ -33,34 +34,40 @@[m [mpublic class Handler {[m
+ 	[m
+ 	[m
+ 	public Handler(){[m
+[31m-		this.initialize();[m
+[32m+[m[41m[m
+ 	}[m
+ [m
+ 	public void tick(){[m
+[31m-	[m
+[32m+[m[41m		[m
+ 		existEnemy = false;[m
+[32m+[m		[32malive = false;[m[41m[m
+[32m+[m		[32mSystem.out.println(object.size());[m[41m[m
+ 		for(int i = 0; i < object.size(); i ++){[m
+ 			GameObject temp = object.get(i);[m
+ 			[m
+ 			[m
+[32m+[m[41m			[m
+ 				//attempt of damaging enemy[m
+ 				if (temp.id == ID.Enemy){[m
+ 					existEnemy = true;[m
+ 					for(int j = 0; j < object.size(); j++){[m
+ 						if ((object.get(j).id != ID.Enemy) && (object.get(j).id != ID.Danmaku)){[m
+[31m-							if (temp.damageCheck(object.get(j).getX(), object.get(j).getY(), object.get(j).getSize())){[m
+[32m+[m[41m							[m
+ 							object.get(j).damageCheck(temp.getX(), temp.getY(), temp.getSize());[m
+[31m-							}[m
+[32m+[m							[32mtemp.damageCheck(object.get(j).getX(), object.get(j).getY(), object.get(j).getSize());[m[41m[m
+[32m+[m[41m							[m
+[32m+[m[41m							[m
+ 						}[m
+ 					}[m
+ 				}[m
+ 				[m
+ 				if (temp.id == ID.Player){[m
+[32m+[m					[32malive = true;[m[41m[m
+ 					for(int j = 0; j < object.size(); j++){[m
+ 						if ((object.get(j).id == ID.Danmaku) || (object.get(j).id == ID.Enemy)){[m
+[31m-							if (temp.damageCheck(object.get(j).getX(), object.get(j).getY(), object.get(j).getSize())){[m
+[32m+[m							[32mtemp.damageCheck(object.get(j).getX(), object.get(j).getY(), object.get(j).getSize());[m[41m[m
+ 							object.get(j).damageCheck(temp.getX(), temp.getY(), temp.getSize());[m
+[31m-							}[m
+[32m+[m[41m							[m
+ 						}[m
+ 					}[m
+ 				}[m
+[36m@@ -71,15 +78,19 @@[m [mpublic class Handler {[m
+ 				}[m
+ [m
+ 			[m
+[31m-			[m
+ 			temp.tick();[m
+ 	[m
+ 		}	[m
+ 		if (!existEnemy){[m
+ 			stage.nextStage();[m
+[32m+[m		[32m}[m[41m[m
+[32m+[m		[32mif (!alive){[m[41m[m
+[32m+[m			[32mwhile(object.size() > 0){[m[41m[m
+[32m+[m				[32mobject.remove(0);[m[41m[m
+[32m+[m			[32m}[m[41m[m
+[32m+[m			[32mstage.gameover();[m[41m[m
+ 			[m
+ 		}[m
+[31m-		[m
+ 	}[m
+ 	[m
+ 	/**[m
+[36m@@ -114,7 +125,13 @@[m [mpublic class Handler {[m
+ 	}[m
+ 	[m
+ [m
+[31m-	public void initialize(){[m
+[32m+[m	[32mpublic void singleInit(){[m[41m[m
+[32m+[m		[32mthis.addObject(new Player(width/4, height*11/16, ID.Player,16, 5, 1));[m[41m[m
+[32m+[m	[32m//	this.addObject(new Player(width*3/4, height*11/16, ID.Player,16, 3, 2));[m[41m[m
+[32m+[m[41m		[m
+[32m+[m		[32mstage = new Stage(this);[m[41m[m
+[32m+[m	[32m}[m[41m[m
+[32m+[m	[32mpublic void multiInit(){[m[41m[m
+ 		this.addObject(new Player(width/4, height*11/16, ID.Player,16, 5, 1));[m
+ 		this.addObject(new Player(width*3/4, height*11/16, ID.Player,16, 3, 2));[m
+ 		[m
+[1mdiff --git a/src/KeyInput.java b/src/KeyInput.java[m
+[1mindex a497701..4459d40 100644[m
+[1m--- a/src/KeyInput.java[m
+[1m+++ b/src/KeyInput.java[m
+[36m@@ -26,11 +26,11 @@[m [mpublic class KeyInput extends KeyAdapter{[m
+ 					}if (key == KeyEvent.VK_D){[m
+ 						tempPlayer.setVelX(5);[m
+ 					}if (key == KeyEvent.VK_T){[m
+[31m-						tempPlayer.setSize(50);[m
+[32m+[m[41m				[m
+ 						handler.addObject(new Missile(temp.x, temp.y, 8));[m
+ 					}[m
+ 					if (key == KeyEvent.VK_Y){[m
+[31m-						tempPlayer.setSize(50);[m
+[32m+[m[41m[m
+ 						handler.addObject(new Lazer(temp.x, temp.y, 8));[m
+ 					}[m
+ 					}[m
+[1mdiff --git a/src/Stage.java b/src/Stage.java[m
+[1mindex 4981c4e..550635b 100644[m
+[1m--- a/src/Stage.java[m
+[1m+++ b/src/Stage.java[m
+[36m@@ -17,13 +17,14 @@[m [mpublic class Stage {[m
+ 	public void nextStage(){[m
+ 		for (int i = 0; i < stage; i ++){[m
+ 			Random ran = new Random();[m
+[31m-			int x = ran.nextInt(600);[m
+[31m-			int y = ran.nextInt(210);[m
+[31m-			handler.addObject(new Enemy(20 + x, 10 + y, 16, 3));[m
+[31m-			System.out.println("Stage " + stage);[m
+[32m+[m			[32mint x = ran.nextInt(1560);[m
+[32m+[m			[32mint y = ran.nextInt(500);[m
+[32m+[m			[32mhandler.addObject(new Enemy(20 + x, 10 + y, 16, 3, handler));[m
+ 		}[m
+ 		System.out.println("Stage " + stage);[m
+ 		stage ++;[m
+ 	}[m
+[31m-	[m
+[32m+[m	[32mpublic void gameover(){[m
+[32m+[m		[32mSystem.out.println("Game Over");[m
+[32m+[m	[32m}[m
+ }[m
+[1mdiff --git a/src/menu.java b/src/menu.java[m
+[1mindex 51c7926..27ccf34 100644[m
+[1m--- a/src/menu.java[m
+[1m+++ b/src/menu.java[m
+[36m@@ -17,11 +17,15 @@[m [mimport java.awt.Panel;[m
+ public class menu {[m
+ [m
+ 	private JFrame frame;[m
+[32m+[m	[32mprivate Game game;[m
+[32m+[m	[32mprivate int width = 1600;[m
+[32m+[m	[32mprivate int height = 1000;[m
+ 	public static void main(String[] args) {[m
+ 		EventQueue.invokeLater(new Runnable() {[m
+ 			public void run() {[m
+ 				try {[m
+ 					menu window = new menu();[m
+[32m+[m[41m				[m
+ 					window.frame.setVisible(true);[m
+ 				} catch (Exception e) {[m
+ 					e.printStackTrace();[m
+[36m@@ -35,9 +39,11 @@[m [mpublic class menu {[m
+ 	}[m
+ [m
+ 	private void initialize() {[m
+[32m+[m
+ 		frame = new JFrame("D4 Game");[m
+ 		frame.getContentPane().setBackground(new Color(51, 51, 51));[m
+[31m-		frame.setBounds( 0, 0, 1600, 1000);[m
+[32m+[m		[32mframe.setBounds( 0, 0, width, height);[m
+[32m+[m[41m	[m
+ 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);[m
+ 		frame.setResizable(false);[m
+ 		frame.getContentPane().setLayout(new BorderLayout(0, 0));[m
+[36m@@ -49,10 +55,12 @@[m [mpublic class menu {[m
+ 		[m
+ 		Panel panel = new Panel();[m
+ 		frame.getContentPane().add(panel, BorderLayout.CENTER);[m
+[31m-		[m
+ 		JButton btnSinglePlayer = new JButton("Single Player");[m
+ 		btnSinglePlayer.addActionListener(new ActionListener() {[m
+ 			public void actionPerformed(ActionEvent e) {[m
+[32m+[m				[32mgame = new Game(width, height);[m
+[32m+[m				[32mgame.getHandler().singleInit();[m
+[32m+[m
+ 			}[m
+ 		});[m
+ 		panel.add(btnSinglePlayer);[m
+[36m@@ -60,6 +68,9 @@[m [mpublic class menu {[m
+ 		JButton btnMultiplayer = new JButton("Multiplayer");[m
+ 		btnMultiplayer.addActionListener(new ActionListener() {[m
+ 			public void actionPerformed(ActionEvent e) {[m
+[32m+[m				[32mgame = new Game(width, height);[m
+[32m+[m				[32mgame.getHandler().multiInit();[m
+[32m+[m
+ 			}[m
+ 		});[m
+ 		panel.add(btnMultiplayer);[m
+[36m@@ -70,6 +81,7 @@[m [mpublic class menu {[m
+ 			}[m
+ 		});[m
+ 		panel.add(btnOptions);[m
+[32m+[m
+ 	}[m
+ 	[m
+ 	public static void centreWindow(Window frame) {[m
+warning: LF will be replaced by CRLF in src/Enemy.java.
+The file will have its original line endings in your working directory.
