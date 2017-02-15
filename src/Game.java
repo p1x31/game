@@ -38,6 +38,11 @@ public class Game extends Canvas implements Runnable{
 	/**Enemy list*/
 	public ArrayList<Enemy> list;
 	
+	/**Return whether the game is currently running or not **/
+	public boolean isRunning(){
+		return running;
+	}
+	
 	/**
 	 * Start.
 	 */

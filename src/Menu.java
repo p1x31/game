@@ -14,7 +14,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Panel;
 
-public class menu {
+public class Menu {
 
 	private JFrame frame;
 	private Game game;
@@ -24,7 +24,7 @@ public class menu {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					menu window = new menu();
+					Menu window = new Menu();
 				
 					window.frame.setVisible(true);
 				} catch (Exception e) {
@@ -34,7 +34,7 @@ public class menu {
 		});
 	}
 	
-	public menu() {
+	public Menu() {
 		initialize();
 	}
 
@@ -60,6 +60,12 @@ public class menu {
 			public void actionPerformed(ActionEvent e) {
 				game = new Game(width, height);
 				game.getHandler().singleInit();
+				
+				if(game.isRunning()){
+					btnSinglePlayer.setEnabled(false);
+				} else {
+					btnSinglePlayer.setEnabled(true);
+				}
 
 			}
 		});
@@ -70,6 +76,12 @@ public class menu {
 			public void actionPerformed(ActionEvent e) {
 				game = new Game(width, height);
 				game.getHandler().multiInit();
+				
+				if(game.isRunning()){
+					btnMultiplayer.setEnabled(false);
+				} else {
+					btnMultiplayer.setEnabled(true);
+				}
 
 			}
 		});
