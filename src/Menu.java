@@ -49,7 +49,6 @@ public class Menu {
 		frame.setResizable(false);
 		frame.getContentPane().setLayout(new BorderLayout(0, 0));
 		centreWindow(frame);
-	//	ImageIcon header = new ImageIcon("http://i.imgur.com/6ndL97D.png");
 		
 		Panel panel = new Panel();
 		frame.getContentPane().add(panel, BorderLayout.CENTER);
