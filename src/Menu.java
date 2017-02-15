@@ -1,4 +1,5 @@
 import java.awt.EventQueue;
+import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.Window;
 
@@ -48,18 +49,17 @@ public class Menu {
 		frame.setResizable(false);
 		frame.getContentPane().setLayout(new BorderLayout(0, 0));
 		centreWindow(frame);
-		JLabel lblHeader = new JLabel("");
-		lblHeader.setHorizontalAlignment(SwingConstants.CENTER);
-		lblHeader.setIcon(new ImageIcon("/Users/Hugh/Documents/Team Project/menutext.png"));
-		frame.getContentPane().add(lblHeader, BorderLayout.NORTH);
+		ImageIcon header = new ImageIcon("http://i.imgur.com/6ndL97D.png");
 		
 		Panel panel = new Panel();
 		frame.getContentPane().add(panel, BorderLayout.CENTER);
 		JButton btnSinglePlayer = new JButton("Single Player");
 		btnSinglePlayer.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				game = new Game(width, height);
+				game = new Game(width-4, height-50);
+				game.setLocation((frame.getX()+width),(frame.getY()+height));
 				game.getHandler().singleInit();
+				
 				
 				if(game.isRunning()){
 					btnSinglePlayer.setEnabled(false);
@@ -69,6 +69,7 @@ public class Menu {
 
 			}
 		});
+		Image img = new ImageIcon(this.getClass().getResource("/header.png")).getImage();
 		panel.add(btnSinglePlayer);
 		
 		JButton btnMultiplayer = new JButton("Multiplayer");
@@ -93,6 +94,12 @@ public class Menu {
 			}
 		});
 		panel.add(btnOptions);
+		
+		JLabel lblHeader = new JLabel("");
+		frame.getContentPane().add(lblHeader, BorderLayout.NORTH);
+		lblHeader.setHorizontalAlignment(SwingConstants.CENTER);
+		lblHeader.setVerticalAlignment(SwingConstants.TOP);
+		lblHeader.setIcon(new ImageIcon(img));
 
 	}
 	
