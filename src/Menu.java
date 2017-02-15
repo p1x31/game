@@ -49,15 +49,14 @@ public class Menu {
 		frame.setResizable(false);
 		frame.getContentPane().setLayout(new BorderLayout(0, 0));
 		centreWindow(frame);
-		ImageIcon header = new ImageIcon("http://i.imgur.com/6ndL97D.png");
+	//	ImageIcon header = new ImageIcon("http://i.imgur.com/6ndL97D.png");
 		
 		Panel panel = new Panel();
 		frame.getContentPane().add(panel, BorderLayout.CENTER);
 		JButton btnSinglePlayer = new JButton("Single Player");
 		btnSinglePlayer.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				game = new Game(width-4, height-50);
-				game.setLocation((frame.getX()+width),(frame.getY()+height));
+				game = new Game((width-4), (height-50));
 				game.getHandler().singleInit();
 				
 				
@@ -75,7 +74,7 @@ public class Menu {
 		JButton btnMultiplayer = new JButton("Multiplayer");
 		btnMultiplayer.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				game = new Game(width, height);
+				game = new Game((width-4), (height-50));
 				game.getHandler().multiInit();
 				
 				if(game.isRunning()){
