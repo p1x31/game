@@ -53,6 +53,8 @@ public class Game extends Canvas implements Runnable{
 		handler = new Handler();
 	}
 	
+
+	
 	/**
 	 * Stop.
 	 */
@@ -127,6 +129,7 @@ public class Game extends Canvas implements Runnable{
 	 */
 	private void tick() {
 		handler.tick();
+		
 	}
 	
 	/**

@@ -20,7 +20,8 @@ public class Handler {
 
 	private Stage stage;
 	private Boolean existEnemy;
-	private Boolean alive;
+	public Boolean alive = true;
+	public Boolean gameover = false;
 	LinkedList<GameObject> object = new LinkedList<GameObject>();
 
 
@@ -91,6 +92,7 @@ public class Handler {
 			stage.gameover();
 			Music.gameover();
 			
+			gameover = true;
 			
 		}
 	}

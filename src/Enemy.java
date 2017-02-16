@@ -38,6 +38,7 @@ public class Enemy extends GameObject {
 
 	private void shoot() {
 		handler.addObject(new Danmaku(this.x, this.y, 5, 1));
+		Music.potwak();
 	}
 
 	@Override
