@@ -9,11 +9,13 @@ import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.Dimension;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Panel;
+import java.awt.Point;
 
 public class Menu {
 
@@ -49,6 +51,12 @@ public class Menu {
 		frame.setResizable(false);
 		frame.getContentPane().setLayout(new BorderLayout(0, 0));
 		centreWindow(frame);
+		
+	/*	Toolkit toolkit = Toolkit.getDefaultToolkit();
+		Image image = toolkit.getImage("/img/cursor.png");
+		Cursor c = toolkit.createCustomCursor(image , new Point(frame.getX(), 
+		           frame.getY()), "img");
+		frame.setCursor (c); */
 		
 		Panel panel = new Panel();
 		frame.getContentPane().add(panel, BorderLayout.CENTER);
