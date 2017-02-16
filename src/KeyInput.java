@@ -4,7 +4,7 @@ import java.awt.event.KeyEvent;
 public class KeyInput extends KeyAdapter{
 	
 	private Handler handler;
-	
+	private int missileCD = 0;
 	public KeyInput(Handler handler){
 		this.handler = handler;
 	}
@@ -26,8 +26,11 @@ public class KeyInput extends KeyAdapter{
 					}if (key == KeyEvent.VK_D){
 						tempPlayer.setVelX(5);
 					}if (key == KeyEvent.VK_T){
-				
+						missileCD ++;
+						if (missileCD % 2 == 0){
 						handler.addObject(new Missile(temp.x, temp.y, 8));
+						Music.popon();
+						}
 					}
 					if (key == KeyEvent.VK_Y){
 
@@ -60,6 +63,7 @@ public class KeyInput extends KeyAdapter{
 					}if (key == KeyEvent.VK_D){
 						temp.setVelX(0);
 					}if (key == KeyEvent.VK_T){
+						missileCD = 1;
 						temp.setSize(16);
 					}if (key == KeyEvent.VK_Y){
 						temp.setSize(16);

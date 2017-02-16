@@ -81,7 +81,7 @@ public class Handler {
 			temp.tick();
 	
 		}	
-		if (!existEnemy){
+		if ((!existEnemy)&&(alive)){
 			stage.nextStage();
 		}
 		if (!alive){
@@ -89,6 +89,8 @@ public class Handler {
 				object.remove(0);
 			}
 			stage.gameover();
+			Music.gameover();
+			
 			
 		}
 	}

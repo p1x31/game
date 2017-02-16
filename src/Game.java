@@ -133,8 +133,8 @@ public class Game extends Canvas implements Runnable{
 	 * Instantiates a new game.
 	 */
 	public Game(int width, int height) {
-		this.width = width;
-		this.height = height;
+//		this.width = width;
+//		this.height = height;
 		handler = new Handler();
 
 		new Board(width, height, "TPA", this);
