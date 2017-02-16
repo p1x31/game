@@ -28,6 +28,7 @@ public class KeyInput extends KeyAdapter{
 					}if (key == KeyEvent.VK_T){
 				
 						handler.addObject(new Missile(temp.x, temp.y, 8));
+						Music.potwak();
 					}
 					if (key == KeyEvent.VK_Y){
 

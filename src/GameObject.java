@@ -188,7 +188,6 @@ public abstract class GameObject{
 		return x;
 	}
 
-
 	/**
 	 * Sets the x.
 	 *

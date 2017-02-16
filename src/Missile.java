@@ -22,7 +22,7 @@ public class Missile extends GameObject{
 	public Missile(int x, int y, int size) {
 		super(x, y, ID.PlayerProjectile, size, 1);
 		// TODO Auto-generated constructor stub
-		this.velY = -3;
+		this.velY = -4;
 	}
 
 	/* (non-Javadoc)
