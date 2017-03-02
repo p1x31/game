@@ -64,9 +64,9 @@ public class KeyInput extends KeyAdapter{
 						temp.setVelX(0);
 					}if (key == KeyEvent.VK_T){
 						missileCD = 1;
-						temp.setSize(16);
+						
 					}if (key == KeyEvent.VK_Y){
-						temp.setSize(16);
+						
 					}
 					}
 				}
