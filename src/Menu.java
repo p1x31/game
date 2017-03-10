@@ -16,6 +16,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Panel;
 import java.awt.Point;
+import javax.swing.JPanel;
+import javax.swing.border.TitledBorder;
+import javax.swing.JToggleButton;
 
 public class Menu {
 
@@ -78,8 +81,29 @@ public class Menu {
 		Image img = new ImageIcon(this.getClass().getResource("/header.png")).getImage();
 		panel.add(btnSinglePlayer);
 		
-		JButton btnMultiplayer = new JButton("Multiplayer");
+		
+		
+		
+		JPanel multisetup = new JPanel();
+		multisetup.setBackground(Color.DARK_GRAY);
+		multisetup.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		multisetup.setVisible(false);
+		
+		JToggleButton btnMultiplayer = new JToggleButton("Multiplayer");
 		btnMultiplayer.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(multisetup.isVisible()){
+					multisetup.setVisible(false);			
+				} else {
+					multisetup.setVisible(true);
+				}
+			}
+		});
+		panel.add(btnMultiplayer);
+		panel.add(multisetup);
+		
+		JButton btnJoin = new JButton("Join Game");
+		btnJoin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				game = new Game((width-4), (height-50));
 				game.getHandler().multiInit();
@@ -89,17 +113,53 @@ public class Menu {
 				} else {
 					btnMultiplayer.setEnabled(true);
 				}
+				multisetup.setVisible(false);
+			}
+		});
+		multisetup.add(btnJoin);
+		
+		JButton btnHost = new JButton("Host Game");
+		btnHost.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				game = new Game((width-4), (height-50));
+				game.getHandler().multiInit();
+				
+				if(game.isRunning()){
+					btnMultiplayer.setEnabled(false);
+				} else {
+					btnMultiplayer.setEnabled(true);
+				}
+				multisetup.setVisible(false);
+			}
+		});
+		multisetup.add(btnHost);
+		
+
+		
+		JPanel options = new JPanel();
+		options.setBackground(Color.DARK_GRAY);
+		options.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		options.setVisible(false);
+		
+		JToggleButton btnOptions = new JToggleButton("Options");
+		btnOptions.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(options.isVisible()){
+					options.setVisible(false);			
+				} else {
+					options.setVisible(true);
+				}
 
 			}
 		});
-		panel.add(btnMultiplayer);
-		
-		JButton btnOptions = new JButton("Options");
-		btnOptions.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
 		panel.add(btnOptions);
+		panel.add(options);
+		
+		JToggleButton tglbtnMute = new JToggleButton("Mute");
+		options.add(tglbtnMute);
+		
+		JToggleButton tglbtnDifficulty = new JToggleButton("Hard Mode");
+		options.add(tglbtnDifficulty);
 		
 		JLabel lblHeader = new JLabel("");
 		frame.getContentPane().add(lblHeader, BorderLayout.NORTH);
