@@ -1,3 +1,4 @@
+
 class MusicThread extends Thread {
 
     byte tempBuffer[] = new byte[320];
@@ -6,23 +7,23 @@ class MusicThread extends Thread {
 
         try {
             int cnt;
-            Music.hasStop = false;
+            MusicPlay.hasStop = false;
 
             // read music to temp buffer
-            while ((cnt = Music.audioInputStream.read(tempBuffer, 0,tempBuffer.length)) != -1)
+            while ((cnt = MusicPlay.audioInputStream.read(tempBuffer, 0,tempBuffer.length)) != -1)
             {
-            	if (Music.isStop)
+            	if (MusicPlay.isStop)
             	break;
 
                 if (cnt > 0) {
                     // write to temp buffer
-                    Music.sourceDataLine.write(tempBuffer, 0, cnt);
+                    MusicPlay.sourceDataLine.write(tempBuffer, 0, cnt);
                     }
             }
 
-            Music.sourceDataLine.drain();
-            Music.sourceDataLine.close();
-            Music.hasStop = true;
+            MusicPlay.sourceDataLine.drain();
+            MusicPlay.sourceDataLine.close();
+            MusicPlay.hasStop = true;
 
         } catch (Exception e) {
             e.printStackTrace();

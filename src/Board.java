@@ -27,6 +27,7 @@ public class Board {
 		frame.setUndecorated(true); // Hide the frame controls and border
 		frame.setVisible(true);
 		game.start();
+		
 	}
 
 }

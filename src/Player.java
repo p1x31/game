@@ -49,7 +49,7 @@ public class Player extends GameObject{
 	 * @param i the i
 	 */
 	public void changeState(int i){
-		this.objectState = i;
+		setObjectState(i);
 	}
 	
 	/* (non-Javadoc)
@@ -78,7 +78,7 @@ public class Player extends GameObject{
 			g.setColor(Color.red);
 		}
 		//players represented by small squares
-		g.fillRect(x - size/2, y - size/2, size, size);
+		g.fillRect(x - width/2, y - height/2, width, height);
 	}
 
 //		private void Collision(LinkedList<GameObject> object){
@@ -96,6 +96,6 @@ public class Player extends GameObject{
 //		}
 		@Override
 	    public Rectangle getBounds() {
-	        return new Rectangle(x, y, size, size);
+	        return new Rectangle(x, y, width, height);
 	    }
 }

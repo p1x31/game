@@ -12,7 +12,7 @@ public abstract class GameObject{
 
 	
 	/** The location. */
-	protected int x,y;
+	protected int x, y;
 	
 	/** The id. */
 	protected ID id;
@@ -20,8 +20,8 @@ public abstract class GameObject{
 	/** The velocity Y. */
 	protected int velX, velY;
 	
-	/** The size. */
-	protected int size;
+	/** The hitbox. */
+	protected int width, height; 
 	
 	/** Check expired objects. */
 	protected boolean expired;
@@ -32,9 +32,33 @@ public abstract class GameObject{
 	/** The object state 
 	 *  prepared for different damaged states in graphics
 	 */
-	protected int objectState;
+	private int objectState;
 	
 	
+	public int getWidth() {
+		return width;
+	}
+
+	public void setWidth(int width) {
+		this.width = width;
+	}
+
+	public int getHeight() {
+		return height;
+	}
+
+	public void setHeight(int height) {
+		this.height = height;
+	}
+
+	public int getObjectState() {
+		return objectState;
+	}
+
+	public void setObjectState(int objectState) {
+		this.objectState = objectState;
+	}
+
 	/**
 	 * Gets the health point.
 	 *
@@ -73,31 +97,17 @@ public abstract class GameObject{
 		this.expired = expired;
 	}
 
-	/**
-	 * Gets the size.
-	 *
-	 * @return the size
-	 */
-	public int getSize() {
-		return size;
-	}
 
-	public boolean damageCheck(int projX, int projY, int projSize){
-		if((Math.abs(projX - this.x) < (size + projSize/2) &&
-				(Math.abs(projY - this.y) < (size+projSize)/2))){
+
+	public boolean damageCheck(int projX, int projY, int projWidth, int projHeight){
+		if((Math.abs(projX - this.x) < (this.width + projWidth)/2) &&
+				(Math.abs(projY - this.y) < (this.height + projHeight)/2)){
 		this.healthPoint --;
 		return true;
 		}
 		return false;
 	}
-	/**
-	 * Sets the size.
-	 *
-	 * @param size the new size
-	 */
-	public void setSize(int size) {
-		this.size = size;
-	}
+
 
 	/**
 	 * Gets the velocity X.
@@ -161,7 +171,8 @@ public abstract class GameObject{
 		this.x = x;
 		this.y = y;
 		this.id = id;
-		this.size = size;
+		this.width = size;
+		this.height = size;
 		this.healthPoint = hp;
 		this.objectState = 1;
 	}

@@ -19,8 +19,9 @@ public class Handler {
 	/** The object list. */
 
 	private Stage stage;
-	private Boolean existEnemy;
-	private Boolean alive;
+	public Boolean existEnemy;
+	public Boolean alive = true;
+	public Boolean gameover = false;
 	LinkedList<GameObject> object = new LinkedList<GameObject>();
 
 
@@ -48,32 +49,32 @@ public class Handler {
 			
 			
 				//attempt of damaging enemy
-				if (temp.id == ID.Enemy){
+				if (temp.getId() == ID.Enemy){
 					existEnemy = true;
 					for(int j = 0; j < object.size(); j++){
-						if ((object.get(j).id != ID.Enemy) && (object.get(j).id != ID.Danmaku)){
+						if ((object.get(j).getId() != ID.Enemy) && (object.get(j).getId() != ID.Danmaku)){
 							
-							object.get(j).damageCheck(temp.getX(), temp.getY(), temp.getSize());
-							temp.damageCheck(object.get(j).getX(), object.get(j).getY(), object.get(j).getSize());
+							object.get(j).damageCheck(temp.getX(), temp.getY(), temp.getWidth(), temp.getHeight());
+							temp.damageCheck(object.get(j).getX(), object.get(j).getY(), object.get(j).getWidth(), object.get(j).getHeight());
 							
 							
 						}
 					}
 				}
 				
-				if (temp.id == ID.Player){
+				if (temp.getId() == ID.Player){
 					alive = true;
 					for(int j = 0; j < object.size(); j++){
-						if ((object.get(j).id == ID.Danmaku) || (object.get(j).id == ID.Enemy)){
-							temp.damageCheck(object.get(j).getX(), object.get(j).getY(), object.get(j).getSize());
-							object.get(j).damageCheck(temp.getX(), temp.getY(), temp.getSize());
+						if ((object.get(j).getId() == ID.Danmaku) || (object.get(j).getId() == ID.Enemy)){
+							temp.damageCheck(object.get(j).getX(), object.get(j).getY(), object.get(j).getWidth(), object.get(j).getHeight());
+							object.get(j).damageCheck(temp.getX(), temp.getY(), temp.getWidth(), temp.getHeight());
 							
 						}
 					}
 				}
 				
 				//remove if object expired
-				if (temp.expired){
+				if (temp.isExpired()){
 					object.remove(i);
 				}
 
@@ -81,7 +82,7 @@ public class Handler {
 			temp.tick();
 	
 		}	
-		if (!existEnemy){
+		if ((!existEnemy)&&(alive)){
 			stage.nextStage();
 		}
 		if (!alive){
@@ -89,6 +90,9 @@ public class Handler {
 				object.remove(0);
 			}
 			stage.gameover();
+			Music.gameover();
+			
+			gameover = true;
 			
 		}
 	}

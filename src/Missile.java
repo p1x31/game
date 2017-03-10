@@ -59,11 +59,11 @@ public class Missile extends GameObject{
 	@Override
 	public void render(Graphics g) {
 		g.setColor(Color.green);
-		g.fillRoundRect(x - size/2, y - size/2, size, size, 5, 5);
+		g.fillRoundRect(x - width/2, y - height/2, width, height, 5, 5);
 		
 	}
 
 	public Rectangle getBounds() {
-		return new Rectangle(x, y, size, size);
+		return new Rectangle(x, y, width, height);
 	}
 }

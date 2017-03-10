@@ -42,7 +42,7 @@ public class Menu {
 	}
 
 	private void initialize() {
-
+		Music.begin();
 		frame = new JFrame("D4 Game");
 		frame.getContentPane().setBackground(new Color(51, 51, 51));
 		frame.setBounds( 0, 0, width, height);
