@@ -58,7 +58,7 @@ public class Menu {
 				game = new Game((width-4), (height-50));
 				game.getHandler().singleInit();
 				
-				
+				game.addKeyListener(new KeyInput(game.getHandler()));
 				if(game.isRunning()){
 					btnSinglePlayer.setEnabled(false);
 				} else {

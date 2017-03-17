@@ -21,8 +21,8 @@ public class Danmaku extends GameObject{
 	 * @param y the y
 	 * @param size the size
 	 */
-	public Danmaku(int x, int y, int size, int hp) {
-		super(x, y, ID.Danmaku, size, hp);
+	public Danmaku(int x, int y, int width, int height, int hp) {
+		super(x, y, ID.Danmaku, width, height, hp);
 		// TODO Auto-generated constructor stub
 		this.velY =5;
 	}

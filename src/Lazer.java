@@ -19,8 +19,8 @@ public class Lazer extends GameObject {
 	 * @param y the y
 	 * @param size the size
 	 */
-	public Lazer(int x, int y, int size) {
-		super(x, y, ID.PlayerProjectile, size, 1);
+	public Lazer(int x, int y, int width, int height) {
+		super(x, y, ID.PlayerProjectile, width, height, 1);
 	}
 
 	/* (non-Javadoc)
@@ -38,7 +38,7 @@ public class Lazer extends GameObject {
 	@Override
 	public void render(Graphics g) {
 		g.setColor(Color.white);
-		g.fillRoundRect(x - 15, 0 , 30, y, 10, 10); // lazer shoots from the character to the edge of the board
+		g.fillRoundRect(x - 15, 0 , 30, y, width, height); // lazer shoots from the character to the edge of the board
 		
 	}
 

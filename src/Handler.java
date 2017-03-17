@@ -130,18 +130,21 @@ public class Handler {
 	
 
 	public void singleInit(){
-		this.addObject(new Player(width/4, height*11/16, ID.Player,16, 5, 1));
+		this.addObject(new Player(width/4, height*11/16, ID.Player,16, 16, 5, 1));
 	//	this.addObject(new Player(width*3/4, height*11/16, ID.Player,16, 3, 2));
 		
 		stage = new Stage(this);
 	}
 	public void multiInit(){
-		this.addObject(new Player(width/4, height*11/16, ID.Player,16, 5, 1));
-		this.addObject(new Player(width*3/4, height*11/16, ID.Player,16, 3, 2));
+		this.addObject(new Player(width/4, height*11/16, ID.Player,16, 16, 5, 1));
+		this.addObject(new Player(width*3/4, height*11/16, ID.Player,16, 16, 3, 2));
 		
 		stage = new Stage(this);
 	}
 
-
+	public Player getPlayer(){
+		return (Player) object.getFirst();
+		
+	}
 
 }

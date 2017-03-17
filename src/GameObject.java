@@ -167,12 +167,12 @@ public abstract class GameObject{
 	 * @param size the size of the object
 	 * @param hp the Health point of the object
 	 */
-	public GameObject(int x, int y, ID id, int size, int hp) {
+	public GameObject(int x, int y, ID id, int width, int height, int hp) {
 		this.x = x;
 		this.y = y;
 		this.id = id;
-		this.width = size;
-		this.height = size;
+		this.width = width;
+		this.height = height;
 		this.healthPoint = hp;
 		this.objectState = 1;
 	}

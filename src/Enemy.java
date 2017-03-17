@@ -7,8 +7,8 @@ public class Enemy extends GameObject {
 	
 	int counter;
 	private Handler handler;
-	public Enemy(int x, int y, int size, int hp, Handler handler) {
-		super(x, y, ID.Enemy, size, hp);
+	public Enemy(int x, int y, int width, int height, int hp, Handler handler) {
+		super(x, y, ID.Enemy, width, height, hp);
 		velX = 3;
 		velY = 3;
 		//velY = 20;
@@ -37,7 +37,7 @@ public class Enemy extends GameObject {
 	}
 
 	private void shoot() {
-		handler.addObject(new Danmaku(this.x, this.y, 5, 1));
+		handler.addObject(new Danmaku(this.x, this.y, 16, 32, 1));
 		Music.potwak();
 	}
 

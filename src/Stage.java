@@ -15,6 +15,7 @@ public class Stage {
 		this.stage = stage;
 	}
 	public void nextStage(){
+		
 		for (int i = 0; i < stage; i ++){
 			Random ran = new Random();
 			int x = ran.nextInt(1560);
@@ -24,7 +25,7 @@ public class Stage {
 			handler.addObject(new Enemy(20*j + x, 10*j + y, 16, 3, handler));
 			}
 			*/
-			handler.addObject(new Enemy(20 + x, 10 + y, 16, 3, handler));
+			handler.addObject(new Enemy(20 + x, 10 + y, 128, 48, 3, handler));
 			//handler.addObject(new Enemy2(20 + x, 20 + y, 18, 10, handler));
 			//handler.addObject(new Enemy4(20 + x, 20 + y, 20, 2));
 		}

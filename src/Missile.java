@@ -19,10 +19,10 @@ public class Missile extends GameObject{
 	 * @param y the y
 	 * @param size the size
 	 */
-	public Missile(int x, int y, int size) {
-		super(x, y, ID.PlayerProjectile, size, 1);
+	public Missile(int x, int y, int width, int height, int missileSpeed) {
+		super(x, y, ID.PlayerProjectile, width, height, 1);
 		// TODO Auto-generated constructor stub
-		this.velY = -4;
+		this.velY = -missileSpeed;
 	}
 
 	/* (non-Javadoc)

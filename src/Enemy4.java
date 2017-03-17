@@ -7,8 +7,8 @@ public class Enemy4 extends GameObject {
 
 	private Handler handler;
 	int counter;
-	public Enemy4(int x, int y, int size, int hp) {
-		super(x, y, ID.Enemy, size, hp);
+	public Enemy4(int x, int y, int width, int height, int hp) {
+		super(x, y, ID.Enemy, width, height, hp);
 		velX = 1;
 		//velY = 20;
 	}

@@ -20,8 +20,8 @@ public class Player extends GameObject{
 	 * @param hp the health point
 	 */
 	private int noPlayer;
-	public Player(int x, int y, ID id, int size, int hp, int noPlayer) {
-		super(x, y, id, size, hp);
+	public Player(int x, int y, ID id, int width, int height, int hp, int noPlayer) {
+		super(x, y, id, width, height, hp);
 		this.noPlayer = noPlayer;
 	}
 
