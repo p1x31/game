@@ -3,21 +3,28 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.util.LinkedList;
 
-public class Enemy4 extends GameObject {
+public class Enemy4 extends GameObject{
 
 	private Handler handler;
 	int counter;
-	public Enemy4(int x, int y, int width, int height, int hp) {
+
+	int playerX;
+	int playerY;
+	Player p;
+	public Enemy4(int x, int y, int width, int height, int hp, Player p) {
 		super(x, y, ID.Enemy, width, height, hp);
-		velX = 1;
-		//velY = 20;
+		velX = 3;
+		velY = 2;
+		this.p = p;
+		//this.playerX = playerX;
+		//this.playerY = playerY;
 	}
 	
 	
 	@Override
 	public void tick() {
-		//x += velX;
-		//y += velY;
+		x += velX;
+		y += velY;
 		/**
 		if ((x < 20) || (x > 620)){
 			velX = -velX;
@@ -26,22 +33,23 @@ public class Enemy4 extends GameObject {
 			velY = - velY;
 		}
 		*/
-		
-		System.out.println(x);
-		for(int i = 0; i < handler.object.size(); i ++)
-		{
-			GameObject temp = handler.object.get(i);
-			if(temp.getId() == ID.Player)
-			{
-				Player tempPlayer = (Player)temp;
-				System.out.println(x);
-				if(x < tempPlayer.getX()) x++;
-				else if(x > tempPlayer.getX()) x--;
-				else if(y > tempPlayer.getY()) y++;
-				else if(y < tempPlayer.getY()) y--;
-			}
+		int playerX = p.getX();
+		int playerY = p.getY();
+		if(x > playerX) {
+			if(velX > 0) velX = -velX;
 		}
-		
+		else if(x < playerX){
+			if(velX < 0) velX = -velX;
+		}
+		else if(y < playerY){
+			if(velY < 0) velY = -velY;
+		}
+		else if (y > playerY) {
+			if (velY > 0) velY = -velY;
+		}
+		//System.out.println(x);
+		//System.out.println(velX);
+		System.out.println("playery: " + playerY);
 		counter ++;
 		if (counter > 20){
 			shoot();

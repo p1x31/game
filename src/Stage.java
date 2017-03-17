@@ -1,3 +1,4 @@
+
 import java.util.Random;
 
 public class Stage {
@@ -15,7 +16,6 @@ public class Stage {
 		this.stage = stage;
 	}
 	public void nextStage(){
-		
 		for (int i = 0; i < stage; i ++){
 			Random ran = new Random();
 			int x = ran.nextInt(1560);
@@ -26,12 +26,27 @@ public class Stage {
 			}
 			*/
 			handler.addObject(new Enemy(20 + x, 10 + y, 128, 48, 3, handler));
-			//handler.addObject(new Enemy2(20 + x, 20 + y, 18, 10, handler));
+			//handler.addObject(new Enemy2(20 +x, 20 +y, 18, 10, handler));
+			//handler.addObject(new Enemy5(780, 250, 18, 10, handler));
 			//handler.addObject(new Enemy4(20 + x, 20 + y, 20, 2));
+			//System.out.println(handler.object.size());
+			for(int j = 0; j < handler.object.size(); j++)
+			{
+				GameObject temp = handler.object.get(j);
+				if (temp.getId() == ID.Player)
+				{
+					Player tempPlayer = (Player) temp;
+					//int playerY = tempPlayer.getY();
+					//int playerX = tempPlayer.getX();
+					handler.addObject(new Enemy4(20 + x, 20 + y, 20, 20, 2, tempPlayer));
+				}
+			}
 		}
 		System.out.println("Stage " + stage);
 		stage ++;
 	}
+
+
 	public void gameover(){
 		System.out.println("Game Over");
 	}
