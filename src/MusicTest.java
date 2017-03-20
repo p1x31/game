@@ -1,5 +1,4 @@
 
-//import audio.*;
 
 public class MusicTest {
 
@@ -7,18 +6,19 @@ public class MusicTest {
 		
 		/* Volume Control & Mute Control
 		 * 
-		 * Set volume value between "-20.0" to "+6.0206f"(reduce 20db to increase 6db)
-		 * Use a slider in interface to change the volumeValue below 
-		 * 
+		 * There are two variable in charge of volume control and mute control respectively.
+		 * Set volume value between "-60.0" to "+6.0206f"(reduce 60db to increase 6db)
 		 * Set Mute Control true or false
 		 * 
-		 * (To make sure both control work,
-		 * Use these two variables before using the sounds effects below)
+		 * There is a complete interface of Music Settings in the class MusicSetting.java
+		 * I have already put 'MusicSetting.Setting();' as a plug-in in Menu.java
+		 * You can click option -> music setting in main program to test it.
 		 * 
 		 */
 		
 		VolumeControl.value = 0.0f;
 		MuteControl.mute = false;
+		//MusicSetting.Setting(); This won't be working here, because of threads need.
 		
 		
 		
@@ -29,15 +29,14 @@ public class MusicTest {
 		 * 1. put audioFile in src folder
 		 * 
 		 * 2. Uncomment one of method below to test the sounds.
-		 *    If two or more music play simultaneously, 
-		 *    it only plays the last one.(except background music)
 		 * 
 		 * 3. Use methods below and put them at where you need.
 		 *    (Make sure import this package to your classes) 
 		 * 
 		 */
 		
-		Music.begin();
+		//Music.begin();
+		Music.BGM();
 		//Music.satellite_noise();
 		//Music.highScore();
 		//Music.popon();
