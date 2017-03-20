@@ -53,7 +53,7 @@ public class MusicSetting {
 			
 			
 			//Volume Slider
-			JSlider slider = new JSlider(JSlider.HORIZONTAL,-20, 6, 0);
+			JSlider slider = new JSlider(JSlider.HORIZONTAL,-60, 6, 0);
 			
 			//SilderListener
 			slider.addChangeListener(new ChangeListener(){
