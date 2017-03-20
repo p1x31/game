@@ -20,4 +20,8 @@ public class VolumeControl {
 		volume.setValue(value);
 		
 	}
+	
+	public static void setVolume(float v){
+		value = v;
+	}
 }

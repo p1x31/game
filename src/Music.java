@@ -58,5 +58,10 @@ public class Music extends Frame {
 		fileName = "cash_register.wav";
 		MusicPlay.play();
 	}
+	
+	public static void BGM(){
+		fileName = "BGM.wav";
+		MusicPlay.play();
+	}
 
 }

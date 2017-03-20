@@ -17,4 +17,8 @@ public class MuteControl {
 				}
 		//Music.sourceDataLine.start();
 	}
+	
+	public static void setMute(boolean m){
+		mute = m;
+	}
 }

@@ -13,6 +13,7 @@ import java.awt.Cursor;
 import java.awt.Dimension;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
 import java.awt.event.ActionEvent;
 import java.awt.Panel;
 import java.awt.Point;
@@ -107,7 +108,7 @@ public class Menu {
 			public void actionPerformed(ActionEvent e) {
 				game = new Game((width-4), (height-50));
 				game.getHandler().multiInit();
-				
+
 				if(game.isRunning()){
 					btnMultiplayer.setEnabled(false);
 				} else {
@@ -155,8 +156,15 @@ public class Menu {
 		panel.add(btnOptions);
 		panel.add(options);
 		
-		JToggleButton tglbtnMute = new JToggleButton("Mute");
+		JToggleButton tglbtnMute = new JToggleButton("Music Setting");
 		options.add(tglbtnMute);
+		tglbtnMute.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				MusicSetting.Setting();
+
+			}
+		});
+		
 		
 		JToggleButton tglbtnDifficulty = new JToggleButton("Hard Mode");
 		options.add(tglbtnDifficulty);
