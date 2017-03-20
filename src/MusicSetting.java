@@ -1,3 +1,4 @@
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -26,8 +27,8 @@ public class MusicSetting {
 			JFrame frame = new JFrame("Audio Settings");
 			frame.setSize(200,50);
 			frame.setUndecorated(true);
-			//frame.getContentPane().setBackground(Color.DARK_GRAY);
-			frame.getContentPane().setVisible(false);
+			frame.getContentPane().setBackground(Color.DARK_GRAY);
+			//frame.getContentPane().setVisible(false);
 			
 			//frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			frame.setTitle("Audio Settings");
