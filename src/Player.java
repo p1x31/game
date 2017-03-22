@@ -22,6 +22,8 @@ public class Player extends GameObject{
 	 * @param size the size
 	 * @param hp the health point
 	 */
+	
+	private GameState state;
 	private int noPlayer;
 	public Player(int x, int y, ID id, int width, int height, int hp, int noPlayer) {
 		super(x, y, id, width, height, hp);
