@@ -45,6 +45,7 @@ public class Client2 {
                     if (!data[1].equals(playerName)) {
                         new_x = Integer.parseInt(data[2]);
                         new_y = Integer.parseInt(data[3]);
+                        board.m.setTile(new_x, new_y, board.spaceCharacter);
                         board.p.moveOpponent(new_x, new_y);
                     }
                 }

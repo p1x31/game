@@ -48,6 +48,7 @@ public class Client {
                     if(!data[1].equals(playerName)){
                         new_x = Integer.parseInt(data[2]);
                         new_y = Integer.parseInt(data[3]);
+                        boardNet.m.setTile(new_x, new_y, BoardNet.spaceCharacter);
                         boardNet.p.moveOpponent(new_x, new_y);
                     }
                 }

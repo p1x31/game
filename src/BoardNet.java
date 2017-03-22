@@ -76,6 +76,7 @@ public class BoardNet extends JPanel implements ActionListener {
             }
             int new_x = p.getX() + offset_x;
             int new_y = p.getY() + offset_y;
+            out.println("POS " + p.name + " " + new_x + " " + new_y + " ");
             m.setTile(new_x, new_y, BoardNet.spaceCharacter);
             p.move(offset_x, offset_y);
         }
