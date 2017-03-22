@@ -1,25 +1,8 @@
-import java.awt.EventQueue;
-import java.awt.Image;
-import java.awt.Toolkit;
-import java.awt.Window;
-
-import javax.swing.JFrame;
-import java.awt.BorderLayout;
-import javax.swing.JLabel;
-import javax.swing.ImageIcon;
-import javax.swing.SwingConstants;
-import java.awt.Color;
-import java.awt.Cursor;
-import java.awt.Dimension;
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.ActionEvent;
-import java.awt.Panel;
-import java.awt.Point;
-import javax.swing.JPanel;
+import javax.swing.*;
 import javax.swing.border.TitledBorder;
-import javax.swing.JToggleButton;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class Menu {
 
@@ -32,9 +15,10 @@ public class Menu {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Menu window = new Menu();
-				
-					window.frame.setVisible(true);
+					//Menu window = new Menu();
+				 Menu window = new Menu();
+				 
+				//	window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -76,6 +60,8 @@ public class Menu {
 					btnSinglePlayer.setEnabled(false);
 				} else {
 					btnSinglePlayer.setEnabled(true);
+					initialize();
+					System.out.println("Stopped");
 				}
 
 			}
@@ -186,7 +172,7 @@ public class Menu {
 		lblHeader.setHorizontalAlignment(SwingConstants.CENTER);
 		lblHeader.setVerticalAlignment(SwingConstants.TOP);
 		lblHeader.setIcon(new ImageIcon(img));
-
+		frame.setVisible(true);
 	}
 	
 	public boolean getHardMode(){

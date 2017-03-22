@@ -1,11 +1,8 @@
-import java.awt.Canvas;
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.Graphics;
+import java.awt.*;
 import java.awt.image.BufferStrategy;
 import java.util.ArrayList;
-import java.util.LinkedList;
 // TODO: Auto-generated Javadoc
+
 /**
  * The Class Game.
  */
@@ -33,6 +30,8 @@ public class Game extends Canvas implements Runnable{
 	
 	public GameState state = GameState.Stage;
 	
+	private Board board;
+	
 	/**Return whether the game is currently running or not **/
 	public boolean isRunning(){
 		return running;
@@ -45,7 +44,7 @@ public class Game extends Canvas implements Runnable{
 		thread = new Thread(this);
 		thread.start();
 		running = true;
-		handler = new Handler();
+	//	handler = new Handler();
 	}
 	
 	
@@ -54,21 +53,22 @@ public class Game extends Canvas implements Runnable{
 	 */
 	public synchronized void stop(){
 		try{
-			thread.join();
 			running = false;
+			board.dispatch();
+			
 		}catch(Exception e){
 			e.printStackTrace();
 		}
 		
 	}
-	public synchronized void waitGame(){
-		try{
-			wait(1000);
-		}
-		catch(Exception e){
-			e.printStackTrace();
-		}
-	}
+//	public synchronized void waitGame(){
+//		try{
+//			wait(1000);
+//		}
+//		catch(Exception e){
+//			e.printStackTrace();
+//		}
+//	}
 	
 	/* (non-Javadoc)
 	 * @see java.lang.Runnable#run()
@@ -120,6 +120,7 @@ public class Game extends Canvas implements Runnable{
                     	running = !running;
                     	
                     	stop();
+                    	
                     }
         }
                 stop();
@@ -190,7 +191,7 @@ public class Game extends Canvas implements Runnable{
 //		this.width = width;
 //		this.height = height;
 		handler = new Handler();
-		new Board(width, height, "TPA", this);
+		board = new Board(width, height, "TPA", this);
 //		Player player1 = new Player(width/4, height*11/16, ID.Player1,16);
 //		Player player2 = new Player(width*3/4, height*11/16, ID.Player2,16);
 //		this.addKeyListener(new KeyInput(handler));

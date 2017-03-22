@@ -1,6 +1,6 @@
-import java.awt.Dimension;
-
-import javax.swing.JFrame;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.WindowEvent;
 
 public class Board {
 
@@ -13,8 +13,9 @@ public class Board {
 	 * @param title the title
 	 * @param game the game
 	 */
+	private JFrame frame;
 	public Board(int width, int height, String title, Game game) {
-		JFrame frame = new JFrame(title);
+		frame = new JFrame(title);
 		
 		frame.setPreferredSize(new Dimension(width, height));
 		frame.setMaximumSize(new Dimension(width, height));
@@ -29,5 +30,7 @@ public class Board {
 		game.start();
 		
 	}
-
+	public void dispatch(){
+		frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
+	}
 }

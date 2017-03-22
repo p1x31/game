@@ -1,32 +1,21 @@
-
-
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Toolkit;
-import java.awt.Window;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import javax.swing.AbstractButton;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JSlider;
-import javax.swing.JToggleButton;
+import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class MusicSetting {
 
 		private static JLabel label1;
+		private static JLabel label2;
 		private static JButton muteButton;
 		
 		public static void Setting(){
 		{
 			System.out.println("Buuton");
 			JFrame frame = new JFrame("Audio Settings");
-			frame.setSize(200,50);
+			frame.setSize(200,100);
 			frame.setUndecorated(true);
 			frame.getContentPane().setBackground(Color.DARK_GRAY);
 			//frame.getContentPane().setVisible(false);
@@ -49,12 +38,12 @@ public class MusicSetting {
 
 			
 			//JLabel label1;
-			label1 = new JLabel("Volume");
+			label1 = new JLabel("SFX Vol");
 			label1.setForeground(Color.white);
-			frame.add(label1, BorderLayout.WEST);
 			
+			frame.add(label1, BorderLayout.BEFORE_LINE_BEGINS);
 			
-			//Volume Slider
+			//Music Volume Slider
 			JSlider slider = new JSlider(JSlider.HORIZONTAL,-60, 6, 0);
 			
 			//SilderListener
@@ -66,6 +55,27 @@ public class MusicSetting {
 			});
 			
 			frame.add(slider, BorderLayout.CENTER);
+			
+			//SFX Volume Slider
+			JPanel BGM = new JPanel(new BorderLayout());
+			
+			JSlider BGMSlider = new JSlider(JSlider.HORIZONTAL,-60, 6, 0);
+			BGMSlider.addChangeListener(new ChangeListener(){
+				public void stateChanged(ChangeEvent event){
+					float value = BGMSlider.getValue();
+					MusicBGM.value = value;
+				}
+			});
+			//frame.add(SFXSlider, BorderLayout.AFTER_LAST_LINE);
+			
+			BGM.add(BGMSlider,BorderLayout.CENTER);
+			label2 = new JLabel("Music Vol");
+			label2.setForeground(Color.white);
+			BGM.add(label2,BorderLayout.WEST);
+			frame.add(BGM, BorderLayout.SOUTH);
+			BGM.setBackground(Color.DARK_GRAY);
+			//frame.add(label2, BorderLayout.BEFORE_LINE_BEGINS);
+			
 			
 			//TemperatureComponent comp = new TemperatureComponent (temp, -1250, 1250, 0);
 			//frame.add(comp);
