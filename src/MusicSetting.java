@@ -1,4 +1,5 @@
 
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -39,6 +40,7 @@ public class MusicSetting {
 			        AbstractButton abstractButton = (AbstractButton) actionEvent.getSource();
 			        boolean selected = abstractButton.getModel().isSelected();
 			        MuteControl.setMute(selected);
+			        MusicBGM.setMute(selected);
 			        System.out.println("Action - selected=" + selected + "\n");
 			      }
 			};
@@ -78,13 +80,4 @@ public class MusicSetting {
 		    frame.setLocation(x, y);
 		}
 		
-		public void stateChanged(ChangeEvent e) {
-		    JSlider slider = (JSlider)e.getSource();
-		    if (!slider.getValueIsAdjusting()) {
-		        VolumeControl.value = (float)slider.getValue();
-		        
-		    }
-		}
-		
-
 }

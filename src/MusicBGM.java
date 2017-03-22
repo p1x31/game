@@ -8,11 +8,13 @@ import java.net.URL;
 import javax.swing.JFrame;
 
 public class MusicBGM {
+	public static boolean mute = true;
 	public static void BGMPlayer(){
 		System.out.println("Playing BGM");
 		JFrame frame = new JFrame("BGM Player");
 		frame.setSize(200,50);
 		frame.setVisible(false);
+		
 		try{
     		System.out.println("Playing");
             URL cb;
@@ -21,9 +23,17 @@ public class MusicBGM {
             AudioClip aau;
             aau = Applet.newAudioClip(cb);
             aau.play();
+            if(mute == true){
+            	aau.stop();
+            }
+            
     	}catch (MalformedURLException e) {
             System.out.println("no music");
         	e.printStackTrace();
         }
+		
+	}
+	public static void setMute(boolean m){
+		mute = m;
 	}
 }
