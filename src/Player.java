@@ -67,7 +67,7 @@ public class Player extends GameObject{
 		y += velY;
 		
 		// when healthPoint is 0 remove/gameover
-		expired = healthPoint == 0 ? true : false;
+		expired = healthPoint <= 0 ? true : false;
 //		Collision(object);
 	}
 		
