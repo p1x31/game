@@ -49,7 +49,7 @@ public class Enemy4 extends GameObject{
 		}
 		//System.out.println(x);
 		//System.out.println(velX);
-		System.out.println("playery: " + playerY);
+//		System.out.println("playery: " + playerY);
 		counter ++;
 		if (counter > 20){
 			shoot();

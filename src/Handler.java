@@ -23,7 +23,7 @@ public class Handler {
 	public Boolean alive = true;
 	public Boolean gameover = false;
 	LinkedList<GameObject> object = new LinkedList<GameObject>();
-
+	protected GameState state = GameState.Game;
 
 
 	/**
@@ -39,10 +39,10 @@ public class Handler {
 	}
 
 	public void tick(){
-		
+		state = GameState.Game;
 		existEnemy = false;
 		alive = false;
-		System.out.println(object.size());
+//		System.out.println(object.size());
 		for(int i = 0; i < object.size(); i ++){
 			GameObject temp = object.get(i);
 			
@@ -84,6 +84,9 @@ public class Handler {
 		}	
 		if ((!existEnemy)&&(alive)){
 			stage.nextStage();
+			state = GameState.Stage;
+		
+			
 		}
 		if (!alive){
 			while(object.size() > 0){
@@ -92,9 +95,11 @@ public class Handler {
 			stage.gameover();
 			Music.gameover();
 			
-			gameover = true;
+			state = GameState.Over;
 			
 		}
+		
+		
 	}
 	
 	/**
@@ -145,6 +150,14 @@ public class Handler {
 	public Player getPlayer(){
 		return (Player) object.getFirst();
 		
+	}
+	public int getStage(){
+		return stage.getStage();
+	}
+
+	public GameState getState() {
+		// TODO Auto-generated method stub
+		return state;
 	}
 
 }

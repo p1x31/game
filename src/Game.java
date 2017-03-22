@@ -38,6 +38,8 @@ public class Game extends Canvas implements Runnable{
 	/**Enemy list*/
 	public ArrayList<Enemy> list;
 	
+	public GameState state = GameState.Stage;
+	
 	/**Return whether the game is currently running or not **/
 	public boolean isRunning(){
 		return running;
@@ -67,6 +69,14 @@ public class Game extends Canvas implements Runnable{
 		}
 		
 	}
+	public synchronized void waitGame(){
+		try{
+			wait(1000);
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+	}
 	
 	/* (non-Javadoc)
 	 * @see java.lang.Runnable#run()
@@ -85,21 +95,35 @@ public class Game extends Canvas implements Runnable{
                     long now = System.nanoTime();
                     delta += (now - lastTime) / ns;
                     lastTime = now;
-                    while(delta >=1)
-                            {
-                                tick();
-                                delta--;
-                            }
-                            if(running)
-                                render();
-                            frames++;
-                            
-                            if(System.currentTimeMillis() - timer > 1000)
-                            {
-                                timer += 1000;
-                                System.out.println("FPS: "+ frames);
-                                frames = 0;
-                            }
+                    int waitTime = 0;
+                    while  (!(state == GameState.Game)){
+                    	System.out.println("stop");
+                    	render();
+                    	waitTime++;
+                    	if (waitTime >= 100){
+                    		state = GameState.Game;
+                    		
+                    		waitTime = 0;
+                    	}
+                    }
+                    while((delta >=1) && (state == GameState.Game)){
+                    	System.out.println("Ticks");
+                    	waitTime = 0;
+                    	tick();
+                    	state = handler.getState();
+                    	delta--;
+                    }
+                    if(running)
+                    	render();
+                    frames++;
+                    
+                    if(System.currentTimeMillis() - timer > 1000)
+                    {
+                    	timer += 1000;
+                    	System.out.println("FPS: "+ frames);
+                    	frames = 0;
+                    }
+                    
         }
                 stop();
     }
@@ -117,10 +141,38 @@ public class Game extends Canvas implements Runnable{
 		
 		g.setColor(Color.black);
 		g.fillRect(0, 0, width, height);
-		handler.render(g);
+		switch (state) {
+		case Game:
+			handler.render(g);
+			break;
+		case Stage:
+			g.setColor(Color.white);
+			g.fillRect(700, 400, 200, 200);
+			g.setColor(Color.black);
+			g.drawString("Stage " + handler.getStage(), 800, 500);
 		
+			break;
+		case Over:
+			g.setColor(Color.white);
+			g.fillRect(700, 400, 200, 200);
+			g.setColor(Color.black);
+			g.drawString("Game Over" , 800, 500);
+			break;
+		case Pause:
+			g.setColor(Color.white);
+			g.fillRect(700, 400, 200, 200);
+			g.setColor(Color.black);
+			g.drawString("Paused" , 800, 500);
+			break;
+		default:
+			break;
+		
+		}
 		g.dispose();
 		bs.show();
+	
+		
+		
 	}
 	
 	/**
