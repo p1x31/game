@@ -81,7 +81,7 @@ public class Menu {
 		btnMultiplayer.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(multisetup.isVisible()){
-					multisetup.setVisible(false);			
+					multisetup.setVisible(false);
 				} else {
 					multisetup.setVisible(true);
 				}
@@ -89,8 +89,31 @@ public class Menu {
 		});
 		panel.add(btnMultiplayer);
 		panel.add(multisetup);
-		
-		JButton btnJoin = new JButton("Join Game");
+
+
+		JButton btnSearch = new JButton("Search opponent");
+		btnSearch.addActionListener(e -> {
+			int temp = (Math.random() <= 0.5) ? 1 : 2;
+			if (temp == 1){
+				try {
+					Client.run();
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+			}else{
+				try {
+					Client2.run();
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+			}
+			multisetup.setVisible(false);
+		});
+		multisetup.add(btnSearch);
+
+
+
+		/*JButton btnJoin = new JButton("Join Game");
 		btnJoin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				game = new Game((width-4), (height-50));
@@ -120,7 +143,7 @@ public class Menu {
 				multisetup.setVisible(false);
 			}
 		});
-		multisetup.add(btnHost);
+		multisetup.add(btnHost);*/
 		
 
 		

@@ -68,7 +68,7 @@ public class GameNet {
 								output.println("END TIE! Both players hit each other.");
 								opponent.output.println("END TIE! Both players hit each other.");
 						}
-						
+
 
 
 

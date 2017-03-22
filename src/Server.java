@@ -2,6 +2,7 @@ import java.net.ServerSocket;
 
 /**
  * Created by Vadim on 28/01/2017.
+ * runs on amazon aws ec2
  */
 public class Server {
 

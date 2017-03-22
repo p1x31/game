@@ -14,7 +14,7 @@ public class Client2 {
     private static PrintWriter out;
     private static String playerName;
     private static BoardNet board;
-    public static void main(String[] args) throws Exception {
+    public static void run() throws Exception {
         String serverAddress = "127.0.0.1";
         // Setup networking
         socket = new Socket(serverAddress, Server.PORT);
@@ -76,4 +76,6 @@ public class Client2 {
     private static void log(String message) {
         System.out.println(message);
     }
+
+
 }
