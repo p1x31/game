@@ -7,12 +7,15 @@ public class Level {
 	private Scanner m;
 	public static final Integer Size = 41;
 	public String Map[] = new String[Size];
-	private Image space;
+	private Image space, ship;
 	public String path = "./res/";
 
 	public Level(){
 		ImageIcon img = new ImageIcon(path + "space.png");
 		space = img.getImage();
+
+		img = new ImageIcon(path + "ship.png");
+		ship = img.getImage();
 
 		openFile();
 		readFile();
@@ -23,6 +26,10 @@ public class Level {
 		return space;
 	}
 
+	public Image getship(){
+		return ship;
+	}
+
 
 	public String getMap(int x, int y){
 		String index = Map[y].substring(x, x + 1);
@@ -31,6 +38,15 @@ public class Level {
 
 	public boolean isspace(int x, int y){
 		if(getMap(x, y).equals(BoardNet.spaceCharacter)){
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
+
+	public boolean isSpaceShip(int x, int y){
+		if(getMap(x, y).equals(BoardNet.spaceShipCharacter)){
 			return true;
 		}
 		else{

@@ -9,6 +9,7 @@ import java.io.PrintWriter;
 public class BoardNet extends JPanel implements ActionListener {
     public static final String spaceCharacter = "_";
     private static final long serialVersionUID = 1649015221280660791L;
+    public static final String spaceShipCharacter = "*";
     public String Message = "Scores ?";
     public boolean end = false;
     public Level m;
@@ -39,6 +40,9 @@ public class BoardNet extends JPanel implements ActionListener {
                 for (int x = 0; x < Level.Size; x++) {
                     if (m.getMap(x, y).equals(spaceCharacter)) {
                         g.drawImage(m.getspace(), x * 20, y * 20, null);
+                    }
+                    if (m.getMap(x, y).equals(spaceShipCharacter)) {
+                        g.drawImage(m.getship(), x * 20, y * 20, null);
                     }
                 }
                 g.drawImage(p.getPlayer(), p.getX() * 20, p.getY() * 20, null);
@@ -77,6 +81,9 @@ public class BoardNet extends JPanel implements ActionListener {
             int new_x = p.getX() + offset_x;
             int new_y = p.getY() + offset_y;
             out.println("POS " + p.name + " " + new_x + " " + new_y + " ");
+            if(m.isSpaceShip(new_x,new_y)){
+                p.win = true;
+            }
             m.setTile(new_x, new_y, BoardNet.spaceCharacter);
             p.move(offset_x, offset_y);
         }

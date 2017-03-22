@@ -63,10 +63,14 @@ public class GameNet {
 						}
 
 						//Handling player collisions
-						if (x == opponent.x && y == opponent.y) {
+						if (x == opponent.x && y == opponent.y)
+						{
 								output.println("END TIE! Both players hit each other.");
 								opponent.output.println("END TIE! Both players hit each other.");
 						}
+						
+
+
 
 						output.println(response);
 						opponent.output.println(response);

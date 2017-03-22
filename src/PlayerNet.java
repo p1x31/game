@@ -6,6 +6,7 @@ public class PlayerNet {
 	private int x, y, op_x, op_y;
 	public String name;
 	public String op_name;
+	public boolean win;
 	private Image player, opponent;
 	public String path = "./img/";
 
