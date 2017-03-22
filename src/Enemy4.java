@@ -1,7 +1,10 @@
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.Rectangle;
 import java.util.LinkedList;
+
+import javax.swing.ImageIcon;
 
 public class Enemy4 extends GameObject{
 
@@ -64,8 +67,8 @@ public class Enemy4 extends GameObject{
 
 	@Override
 	public void render(Graphics g) {
-		g.setColor(Color.green);
-		g.fillRect(x - width /2, y - height/2, width, height);
+		Image img = new ImageIcon(this.getClass().getResource("/enemy4.png")).getImage();
+		g.drawImage(img, x - width/2, y - height/2, width, height, null);
 	}
 
 	@Override

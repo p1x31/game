@@ -1,7 +1,10 @@
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.Rectangle;
 import java.util.LinkedList;
+
+import javax.swing.ImageIcon;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -44,7 +47,7 @@ public class Missile extends GameObject{
 //	        GameObject temp = Handler.object.get(i);
 //	        if(temp.getId() == ID.Enemy){
 //	                if(getBounds().intersects(temp.getBounds())){
-//	                	System.out.println("£¿");
+//	                	System.out.println("ï¿½ï¿½");
 //	                    //velY=0;
 //	                    //y= temp.getY();
 //	                	expired = true;
@@ -58,8 +61,8 @@ public class Missile extends GameObject{
 	 */
 	@Override
 	public void render(Graphics g) {
-		g.setColor(Color.green);
-		g.fillRoundRect(x - width/2, y - height/2, width, height, 5, 5);
+		Image img = new ImageIcon(this.getClass().getResource("/cannonball.png")).getImage();
+		g.drawImage(img, x - width/2, y - height/2, width, height, null);
 		
 	}
 

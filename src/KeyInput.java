@@ -33,7 +33,7 @@ public class KeyInput implements KeyListener{
 				case KeyEvent.VK_T : 
 					missileCD ++;
 					if (missileCD % 2 == 0){
-					handler.addObject(new Missile(player.x, player.y, 8, 16, missileSpeed));
+					handler.addObject(new Missile(player.x, player.y, 16, 16, missileSpeed));
 					Music.popon();
 					}
 					break;

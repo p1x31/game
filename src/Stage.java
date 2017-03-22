@@ -17,12 +17,12 @@ public class Stage {
 		this.stage = stage;
 	}
 	public void nextStage(){
-		generateWave1(stage);
+		//generateWave1(stage);
 		if(stage == 1) {
-			generateWave2();
-			generateBoss();
+			//generateWave2();
+			//generateBoss();
 		}
-		else if(stage % 5 == 0) handler.addObject(new Enemy5(400, -100, 40, 30, 150, handler));
+		else if(stage % 5 == 0) handler.addObject(new Enemy5(400, -100, 50, 50, 150, handler));
 		else
 		{
 			for (int i = 0; i < stage; i ++){
@@ -30,7 +30,7 @@ public class Stage {
 			int x = ran.nextInt(1560);
 			int y = ran.nextInt(500);
 			
-			handler.addObject(new Enemy(20 + x, 10 + y, 128, 48, 3, handler));
+			handler.addObject(new Enemy(20 + x, 10 + y, 40, 40, 3, handler));
 			//handler.addObject(new Enemy2(20 +x, 20 +y, 18, 10, handler));
 			//System.out.println(handler.object.size());
 			for(int j = 0; j < handler.object.size(); j++)
@@ -41,7 +41,7 @@ public class Stage {
 					Player tempPlayer = (Player) temp;
 					//int playerY = tempPlayer.getY();
 					//int playerX = tempPlayer.getX();
-					handler.addObject(new Enemy4(20 + x, 20 + y, 20, 20, 2, tempPlayer));
+					handler.addObject(new Enemy4(20 + x, 20 + y, 30, 30, 2, tempPlayer));
 				}
 			}
 		}
@@ -63,8 +63,8 @@ public class Stage {
 		java.util.Timer timer = new java.util.Timer(true); 
 		TimerTask taske2 = new TimerTask(){
 			public void run(){
-				handler.addObject(new Enemy2(-10, 0, 10, 10, 3, 1, 10, handler));
-				handler.addObject(new Enemy2(1580, 0, 10, 10,-3, 1, 10, handler));
+				handler.addObject(new Enemy2(-10, 0, 25, 25, 3, 1, 10, handler));
+				handler.addObject(new Enemy2(1580, 0, 25, 25,-3, 1, 10, handler));
 			}
 		};
 		timer.schedule(taske2, 2000, 2000);
@@ -94,7 +94,7 @@ public class Stage {
 						//int playerY = tempPlayer.getY();
 						//int playerX = tempPlayer.getX();
 						handler.addObject(new Enemy4(100 , -100, 20, 20, 2, tempPlayer));
-						handler.addObject(new Enemy4(1400 , -100, 20, 20, 2, tempPlayer));
+						handler.addObject(new Enemy4(1400 , -100, 30, 30, 2, tempPlayer));
 					}
 				}
 			}
@@ -115,7 +115,7 @@ public class Stage {
 		TimerTask taskBoss = new TimerTask(){
 			public void run(){
 
-				        handler.addObject(new Enemy5(400, -100, 40, 30, 150, handler));
+				        handler.addObject(new Enemy5(400, -100, 40, 40, 150, handler));
 					
 				}
 			

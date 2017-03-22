@@ -1,7 +1,10 @@
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.Rectangle;
 import java.util.LinkedList;
+
+import javax.swing.ImageIcon;
 
 
 public class Danmaku extends GameObject{
@@ -42,8 +45,8 @@ public class Danmaku extends GameObject{
 	 */
 	@Override
 	public void render(Graphics g) {
-		g.setColor(Color.white);
-		g.fillRoundRect(x - width /2 , y - height /2, width, height, 5, 5);
+		Image img = new ImageIcon(this.getClass().getResource("/barrage.png")).getImage();
+		g.drawImage(img, x - width/2, y - height/2, width, height, null);
 		
 	}
 

@@ -1,7 +1,10 @@
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.Rectangle;
 import java.util.LinkedList;
+
+import javax.swing.ImageIcon;
 
 
 // TODO: Auto-generated Javadoc
@@ -74,11 +77,15 @@ public class Player extends GameObject{
 			// simple player differences 
 		if(this.noPlayer == 1){
 			g.setColor(Color.blue);
+			Image img = new ImageIcon(this.getClass().getResource("/playership.png")).getImage();
+			g.drawImage(img, x - width/2, y - height/2, width, height, null);
 		} else if (this.noPlayer == 2){
 			g.setColor(Color.red);
+			Image img = new ImageIcon(this.getClass().getResource("/playership.png")).getImage();
+			g.drawImage(img, x - width/2, y - height/2, width, height, null);
 		}
 		//players represented by small squares
-		g.fillRect(x - width/2, y - height/2, width, height);
+		//g.fillRect(x - width/2, y - height/2, width, height);
 	}
 
 //		private void Collision(LinkedList<GameObject> object){

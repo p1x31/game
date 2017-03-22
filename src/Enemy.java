@@ -1,7 +1,10 @@
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.Rectangle;
+
+import javax.swing.ImageIcon;
 
 public class Enemy extends GameObject {
 
@@ -38,14 +41,14 @@ public class Enemy extends GameObject {
 	}
 
 	private void shoot() {
-		handler.addObject(new Danmaku(this.x, this.y, 16, 32, 1));
+		handler.addObject(new Danmaku(this.x, this.y, 20, 20, 1));
 		Music.potwak();
 	}
 
 	@Override
 	public void render(Graphics g) {
-		g.setColor(Color.green);
-		g.fillRect(x - width /2, y - height/2, width, height);
+		Image img = new ImageIcon(this.getClass().getResource("/enemy1.png")).getImage();
+		g.drawImage(img, x - width/2, y - height/2, width, height, null);
 	}
 
 	@Override
