@@ -17,12 +17,12 @@ public class Stage {
 		this.stage = stage;
 	}
 	public void nextStage(){
-
+		generateWave1(stage);
 		if(stage == 1) {
-			generateWave1(stage);
 			generateWave2();
 			generateBoss();
 		}
+		else if(stage % 5 == 0) handler.addObject(new Enemy5(400, -100, 40, 30, 150, handler));
 		else
 		{
 			for (int i = 0; i < stage; i ++){
@@ -44,7 +44,6 @@ public class Stage {
 					handler.addObject(new Enemy4(20 + x, 20 + y, 20, 20, 2, tempPlayer));
 				}
 			}
-			
 		}
 		}
 		System.out.println("Stage " + stage);
@@ -115,17 +114,23 @@ public class Stage {
 		java.util.Timer timer = new java.util.Timer(true); 
 		TimerTask taskBoss = new TimerTask(){
 			public void run(){
-				for(int j = 0; j < handler.object.size(); j++)
-				{
-					GameObject temp = handler.object.get(j);
-					if (temp.getId() == ID.Player)
-					{
-						Player tempPlayer = (Player) temp;
-				        handler.addObject(new Enemy5(400, -100, 40, 30, 150, handler, tempPlayer));
-					}
+
+				        handler.addObject(new Enemy5(400, -100, 40, 30, 150, handler));
+					
 				}
-			}
+			
 		};
 		timer.schedule(taskBoss, 20000);
+	}
+	
+	public void generateWave3()
+	{
+		java.util.Timer timer = new java.util.Timer(true); 
+		TimerTask taskWave3 = new TimerTask(){
+			public void run()
+			{
+				
+			}
+			};
 	}
 }

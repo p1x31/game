@@ -6,8 +6,7 @@ import java.util.Random;
 public class Enemy5 extends GameObject{
 	int counter;
 	Handler handler;
-	Player p;
-	public Enemy5(int x, int y, int width, int height, int hp, Handler handler, Player p) {
+	public Enemy5(int x, int y, int width, int height, int hp, Handler handler) {
 		super(x, y, ID.Enemy, width, height, hp);
 		// TODO Auto-generated constructor stub
 		velX = 2;
