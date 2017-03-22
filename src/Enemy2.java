@@ -8,10 +8,10 @@ public class Enemy2 extends GameObject {
 	int counter;
 	int angle;
 	private Handler handler;
-	public Enemy2(int x, int y, int width, int height, int hp, Handler handler) {
+	public Enemy2(int x, int y, int width, int height, int velX, int velY, int hp, Handler handler) {
 		super(x, y, ID.Enemy, width, height, hp);
-		velX = 3;
-		velY = 3;
+		this.velX = velX;
+		this.velY = velY;
 		this.handler = handler;
 	}
 
@@ -26,6 +26,7 @@ public class Enemy2 extends GameObject {
 		y += (float) (200 * Math.cos(velY * angle));
 		*/
 
+		if(y > 500) velY = -velY;
 		counter ++;
 		
 		if (counter % 20 == 0){
@@ -34,14 +35,14 @@ public class Enemy2 extends GameObject {
 		
 		}
 		expired = healthPoint < 0 ;
-		if(y > 1000) expired = true;
+		if(y > 1000 || y < 0) expired = true;
 		
 	}
 
 	private void shoot() {
 		handler.addObject(new Danmaku(this.x, this.y, 5, 5, 1));
-		handler.addObject(new Danmaku2(this.x, this.y, 5, 5, 1));
-		handler.addObject(new Danmaku3(this.x, this.y, 5, 5, 1));
+		//handler.addObject(new Danmaku2(this.x, this.y, 5, 5, 1));
+		//handler.addObject(new Danmaku3(this.x, this.y, 5, 5, 1));
 
 	}
 
