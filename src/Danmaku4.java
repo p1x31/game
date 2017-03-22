@@ -5,10 +5,23 @@ import java.util.LinkedList;
 
 public class Danmaku4 extends GameObject{
 
+	/** initial x velocity*/
 	int velX;
+	
+	/** initial y velocity*/
 	int velY;
-	int cx;
-	int cy;
+	
+	/**
+	 * Class Danmaku4
+	 * @param x initial x coordinates
+	 * @param y initial y coordinates
+	 * @param width width of bullet
+	 * @param height height of bullet
+	 * @param hp health point
+	 * @param velX initial x velocity
+	 * @param velY initial y velocity
+	 * @param handler handle bullets
+	 */
 	public Danmaku4(int x, int y, int width, int height, int hp, int velX, int velY) {
 		super(x, y, ID.Danmaku, width, height, hp);
 		// TODO Auto-generated constructor stub
@@ -16,6 +29,9 @@ public class Danmaku4 extends GameObject{
 		this.velX = velX;
 	}
 	
+	/* (non-Javadoc)
+	 * @see GameObject#tick()
+	 */
 	@Override
 	public void tick() {
 		x += velX;
@@ -31,10 +47,6 @@ public class Danmaku4 extends GameObject{
 		g.setColor(Color.white);
 		g.fillRoundRect(x - width /2 , y - height /2, width, height, 5, 5);
 		
-	}
-
-	public Rectangle getBounds() {
-		return new Rectangle(x, y, width, height);
 	}
 
 }

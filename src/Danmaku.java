@@ -22,7 +22,9 @@ public class Danmaku extends GameObject{
 	 *
 	 * @param x the x
 	 * @param y the y
-	 * @param size the size
+	 * @param width width of bullet
+	 * @param height height of bullet
+	 * @param hp health point
 	 */
 	public Danmaku(int x, int y, int width, int height, int hp) {
 		super(x, y, ID.Danmaku, width, height, hp);
@@ -50,8 +52,5 @@ public class Danmaku extends GameObject{
 		
 	}
 
-	public Rectangle getBounds() {
-		return new Rectangle(x, y, width, height);
-	}
 }
 

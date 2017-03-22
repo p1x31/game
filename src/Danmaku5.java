@@ -8,9 +8,26 @@ import javax.swing.ImageIcon;
 
 public class Danmaku5 extends GameObject{
 
+	/** initial x velocity*/ 
 	int velX;
+	
+	/** initial y velocity*/
 	int velY;
+	
+	/** handler that handle bullets*/
 	Handler handler;
+	
+	/**
+	 * Class Danmaku5
+	 * @param x initial x coordinates
+	 * @param y initial y coordinates
+	 * @param width width of bullet
+	 * @param height height of bullet
+	 * @param hp health point
+	 * @param velX initial x velocity
+	 * @param velY initial y velocity
+	 * @param handler handle bullets
+	 */
 	public Danmaku5(int x, int y, int width, int height, int hp, int velX, int velY, Handler handler) {
 		super(x, y, ID.Danmaku, width, height, hp);
 		// TODO Auto-generated constructor stub
@@ -19,6 +36,9 @@ public class Danmaku5 extends GameObject{
 		this.handler = handler;
 	}
 	
+	/* (non-Javadoc)
+	 * @see GameObject#tick()
+	 */
 	@Override
 	public void tick() {
 		java.util.Timer timer = new java.util.Timer(true); 
@@ -41,10 +61,15 @@ public class Danmaku5 extends GameObject{
 		
 		
 	}
+	
+	/**
+	 * shoot bullets
+	 */
 	private void shoot() {
 		handler.addObject(new Danmaku(this.x, this.y, 16, 32, 1));
 		//Music.potwak();
 	}
+	
 	/* (non-Javadoc)
 	 * @see GameObject#render(java.awt.Graphics)
 	 */
@@ -55,9 +80,4 @@ public class Danmaku5 extends GameObject{
 		
 	}
 
-	@Override
-	public Rectangle getBounds() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }

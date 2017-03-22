@@ -8,9 +8,23 @@ import javax.swing.ImageIcon;
 
 public class Enemy extends GameObject {
 
-	
+	/**
+	 * firing rate
+	 */
 	int counter;
+	/**
+	 * handle bullets
+	 */
 	private Handler handler;
+	/**
+	 * the class for enemy type1
+	 * @param x initial x coordinates
+	 * @param y initial y coordinates
+	 * @param width width of enemy
+	 * @param height height of enemy
+	 * @param hp health point of enemy
+	 * @param handler handler that handle enemy bullets
+	 */
 	public Enemy(int x, int y, int width, int height, int hp, Handler handler) {
 		super(x, y, ID.Enemy, width, height, hp);
 		velX = 3;
@@ -18,7 +32,10 @@ public class Enemy extends GameObject {
 		//velY = 20;
 		this.handler = handler;
 	}
-
+	
+	/**
+	 * update any action
+	 */
 	@Override
 	public void tick() {
 		x += velX;
@@ -40,21 +57,21 @@ public class Enemy extends GameObject {
 		
 	}
 
+	/**
+	 * shoot bullets
+	 */
 	private void shoot() {
 		handler.addObject(new Danmaku(this.x, this.y, 20, 20, 1));
 		Music.potwak();
 	}
 
+	/**
+	 * implement graph
+	 */
 	@Override
 	public void render(Graphics g) {
 		Image img = new ImageIcon(this.getClass().getResource("/enemy1.png")).getImage();
 		g.drawImage(img, x - width/2, y - height/2, width, height, null);
-	}
-
-	@Override
-	public Rectangle getBounds() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 }

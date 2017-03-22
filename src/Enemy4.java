@@ -8,12 +8,35 @@ import javax.swing.ImageIcon;
 
 public class Enemy4 extends GameObject{
 
-	private Handler handler;
+	/**
+	 * firing rate
+	 */
 	int counter;
 
+	/**
+	 * current player x coordinates
+	 */
 	int playerX;
+	
+	/**
+	 * current player y coordiantes
+	 */
 	int playerY;
+	
+	/**
+	 * player
+	 */
 	Player p;
+	
+	/**
+	 * Class enemy4
+	 * @param x initial x coordinates
+	 * @param y initial y coordiantes
+	 * @param width width of enemy4
+	 * @param height height of enemy4
+	 * @param hp health point
+	 * @param p Player that will be tracked
+	 */
 	public Enemy4(int x, int y, int width, int height, int hp, Player p) {
 		super(x, y, ID.Enemy, width, height, hp);
 		velX = 3;
@@ -23,7 +46,9 @@ public class Enemy4 extends GameObject{
 		//this.playerY = playerY;
 	}
 	
-	
+	/**
+	 * update any action
+	 */
 	@Override
 	public void tick() {
 		x += velX;
@@ -53,28 +78,16 @@ public class Enemy4 extends GameObject{
 		//System.out.println(x);
 		//System.out.println(velX);
 //		System.out.println("playery: " + playerY);
-		counter ++;
-		if (counter > 20){
-			shoot();
-			counter = 0;
-		}
 		expired = healthPoint < 0 ;
 	}
 
-	private boolean shoot() {
-		return true;
-	}
-
+	/**
+	 * implement graph
+	 */
 	@Override
 	public void render(Graphics g) {
 		Image img = new ImageIcon(this.getClass().getResource("/enemy4.png")).getImage();
 		g.drawImage(img, x - width/2, y - height/2, width, height, null);
-	}
-
-	@Override
-	public Rectangle getBounds() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 }

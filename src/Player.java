@@ -86,25 +86,7 @@ public class Player extends GameObject{
 			Image img = new ImageIcon(this.getClass().getResource("/playership.png")).getImage();
 			g.drawImage(img, x - width/2, y - height/2, width, height, null);
 		}
-		//players represented by small squares
-		//g.fillRect(x - width/2, y - height/2, width, height);
 	}
 
-//		private void Collision(LinkedList<GameObject> object){
-//		    for(int i=0; i<Handler.object.size();i++){
-//		        GameObject temp = Handler.object.get(i);
-//		        if(temp.getId() == ID.Enemy){
-//		                if(getBounds().intersects(temp.getBounds())){
-//		                	System.out.println("Collision");
-//		                    //velY=0;
-//		                    //y= temp.getY();
-//		                	expired = true;
-//		                }
-//		    }
-//		    }
-//		}
-		@Override
-	    public Rectangle getBounds() {
-	        return new Rectangle(x, y, width, height);
-	    }
+
 }

@@ -19,7 +19,9 @@ public class Danmaku3 extends GameObject{
 	 *
 	 * @param x the x
 	 * @param y the y
-	 * @param size the size
+	 * @param width width of missile
+	 * @param height height of missile
+	 * @param hp health point
 	 */
 	public Danmaku3(int x, int y, int width, int height, int hp) {
 		super(x, y, ID.Danmaku, width, height, hp);
@@ -46,9 +48,5 @@ public class Danmaku3 extends GameObject{
 		g.setColor(Color.white);
 		g.fillRoundRect(x - width /2 , y - height /2, width, height, 5, 5);
 		
-	}
-
-	public Rectangle getBounds() {
-		return new Rectangle(x, y, width, height);
 	}
 }

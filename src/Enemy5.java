@@ -7,8 +7,25 @@ import java.util.Random;
 import javax.swing.ImageIcon;
 
 public class Enemy5 extends GameObject{
+	/**
+	 * firing rate
+	 */
 	int counter;
+	
+	/**
+	 * handler bullets
+	 */
 	Handler handler;
+	
+	/**
+	 * Class for enemy5
+	 * @param x initial x coordinates
+	 * @param y initial y coordinates
+	 * @param width width of enemy5
+	 * @param height height of enemy5
+	 * @param hp health point
+	 * @param handler handle bullets
+	 */
 	public Enemy5(int x, int y, int width, int height, int hp, Handler handler) {
 		super(x, y, ID.Enemy, width, height, hp);
 		// TODO Auto-generated constructor stub
@@ -18,6 +35,9 @@ public class Enemy5 extends GameObject{
 	}
 
 
+	/**
+	 * update actions
+	 */
 	@Override
 	public void tick() {
 		x += velX;
@@ -46,6 +66,9 @@ public class Enemy5 extends GameObject{
 		
 	}
 
+	/**
+	 * shoot different bullets at different positions
+	 */
 	private void shoot() {
 			if(x >720 && x < 840){
 		
@@ -80,16 +103,13 @@ public class Enemy5 extends GameObject{
 
 	}
 
+	/**
+	 * implement graphs
+	 */
 	@Override
 	public void render(Graphics g) {
 		Image img = new ImageIcon(this.getClass().getResource("/enemy4.png")).getImage();
 		g.drawImage(img, x - width/2, y - height/2, width, height, null);
-	}
-
-	@Override
-	public Rectangle getBounds() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 

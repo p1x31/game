@@ -70,7 +70,7 @@ public class Menu {
 			public void actionPerformed(ActionEvent e) {
 				game = new Game((width-4), (height-50));
 				game.getHandler().singleInit();
-				
+				MusicBGM.BGMPlayer();
 				game.addKeyListener(new KeyInput(game.getHandler()));
 				if(game.isRunning()){
 					btnSinglePlayer.setEnabled(false);

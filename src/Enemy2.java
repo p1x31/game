@@ -7,10 +7,26 @@ import javax.swing.ImageIcon;
 
 public class Enemy2 extends GameObject {
 
-	
+	/**
+	 * firing rate
+	 */
 	int counter;
-	int angle;
+	/**
+	 * handler bullets
+	 */
 	private Handler handler;
+	
+	/**
+	 * the class enemy2
+	 * @param x initial x coordinates
+	 * @param y initial y coordinates
+	 * @param width width of enemy2
+	 * @param height height of enemy2
+	 * @param velX initial x velocity 
+	 * @param velY initial y velocity
+	 * @param hp health point
+	 * @param handler handle bullets
+	 */
 	public Enemy2(int x, int y, int width, int height, int velX, int velY, int hp, Handler handler) {
 		super(x, y, ID.Enemy, width, height, hp);
 		this.velX = velX;
@@ -18,6 +34,9 @@ public class Enemy2 extends GameObject {
 		this.handler = handler;
 	}
 
+	/**
+	 * update any action
+	 */
 	@Override
 	public void tick() {
 		x += velX;
@@ -42,6 +61,9 @@ public class Enemy2 extends GameObject {
 		
 	}
 
+	/**
+	 * shoot bullets
+	 */
 	private void shoot() {
 		handler.addObject(new Danmaku(this.x, this.y, 5, 5, 1));
 		//handler.addObject(new Danmaku2(this.x, this.y, 5, 5, 1));
@@ -49,16 +71,16 @@ public class Enemy2 extends GameObject {
 
 	}
 
+	/**
+	 * implement graph
+	 */
 	@Override
 	public void render(Graphics g) {
 		Image img = new ImageIcon(this.getClass().getResource("/enemy2.png")).getImage();
 		g.drawImage(img, x - width/2, y - height/2, width, height, null);
 	}
 
-	@Override
-	public Rectangle getBounds() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
+	
 
 }

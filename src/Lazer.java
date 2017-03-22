@@ -42,10 +42,5 @@ public class Lazer extends GameObject {
 		
 	}
 
-	@Override
-	public Rectangle getBounds() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 }

@@ -8,7 +8,7 @@ import java.net.URL;
 import javax.swing.JFrame;
 
 public class MusicBGM {
-	public static boolean mute = true;
+	public static boolean mute = false;
 	public static void BGMPlayer(){
 		System.out.println("Playing BGM");
 		JFrame frame = new JFrame("BGM Player");

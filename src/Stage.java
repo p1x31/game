@@ -10,12 +10,26 @@ public class Stage {
 		this.handler = handler;
 		stage = 0;
 	}
+	
+	/**
+	 * get stage
+	 * @return current stage
+	 */
 	public int getStage() {
 		return stage;
 	}
+	
+	/**
+	 * set stage
+	 * @param stage set to this stage
+	 */
 	public void setStage(int stage) {
 		this.stage = stage;
 	}
+	
+	/**
+	 * next stage
+	 */
 	public void nextStage(){
 		stage ++;
 		if (Menu.hardmode){
@@ -54,11 +68,17 @@ public class Stage {
 
 	}
 
-
+	/**
+	 * game over
+	 */
 	public void gameover(){
 		System.out.println("Game Over");
 	}
 	
+	/**
+	 * generate enemy wave 1 in hard mode
+	 * @param n number of current stage
+	 */
 	public void generateWave1(int n)
 	{
 		switch(n)
@@ -84,6 +104,9 @@ public class Stage {
 		}
 	}
 	
+	/**
+	 * generate enemy wave 2 in hard mode
+	 */
 	public void generateWave2()
 	{
 		java.util.Timer timer = new java.util.Timer(true); 
@@ -113,6 +136,9 @@ public class Stage {
 		timer.schedule(stop, 17000);
 	}
 	
+	/**
+	 * generate boss in hard mode
+	 */
 	public void generateBoss()
 	{
 		java.util.Timer timer = new java.util.Timer(true); 
@@ -127,14 +153,4 @@ public class Stage {
 		timer.schedule(taskBoss, 20000);
 	}
 	
-	public void generateWave3()
-	{
-		java.util.Timer timer = new java.util.Timer(true); 
-		TimerTask taskWave3 = new TimerTask(){
-			public void run()
-			{
-				
-			}
-			};
-	}
 }
