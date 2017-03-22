@@ -27,6 +27,7 @@ public class Menu {
 	private Game game;
 	private int width = 1600;
 	private int height = 1000;
+	static boolean hardmode;
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -165,9 +166,20 @@ public class Menu {
 			}
 		});
 		
-		
 		JToggleButton tglbtnDifficulty = new JToggleButton("Hard Mode");
+		tglbtnDifficulty.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				if(tglbtnDifficulty.isSelected()){
+					hardmode = true;
+				} else { hardmode = false;
+				}
+			}
+		});
+		
 		options.add(tglbtnDifficulty);
+		
+
 		
 		JLabel lblHeader = new JLabel("");
 		frame.getContentPane().add(lblHeader, BorderLayout.NORTH);
@@ -176,6 +188,12 @@ public class Menu {
 		lblHeader.setIcon(new ImageIcon(img));
 
 	}
+	
+	public boolean getHardMode(){
+		return hardmode;
+	}
+
+	
 	
 	public static void centreWindow(Window frame) {
 	    Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();

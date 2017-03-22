@@ -17,11 +17,14 @@ public class Stage {
 		this.stage = stage;
 	}
 	public void nextStage(){
-		//generateWave1(stage);
-		if(stage == 1) {
-			//generateWave2();
-			//generateBoss();
+		if (Menu.hardmode){
+			generateWave1(stage);
+			if(stage == 1) {
+				generateWave2();
+				generateBoss();
+			}
 		}
+
 		else if(stage % 5 == 0) handler.addObject(new Enemy5(400, -100, 50, 50, 150, handler));
 		else
 		{
