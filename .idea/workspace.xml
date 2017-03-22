@@ -2,29 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f93f166d-803f-4658-9e0c-20d853b31f9d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Board.java" afterPath="$PROJECT_DIR$/src/Board.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Danmaku.java" afterPath="$PROJECT_DIR$/src/Danmaku.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Danmaku2.java" afterPath="$PROJECT_DIR$/src/Danmaku2.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Danmaku3.java" afterPath="$PROJECT_DIR$/src/Danmaku3.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Danmaku4.java" afterPath="$PROJECT_DIR$/src/Danmaku4.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Danmaku5.java" afterPath="$PROJECT_DIR$/src/Danmaku5.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Danmaku6.java" afterPath="$PROJECT_DIR$/src/Danmaku6.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Enemy.java" afterPath="$PROJECT_DIR$/src/Enemy.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Enemy2.java" afterPath="$PROJECT_DIR$/src/Enemy2.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Enemy4.java" afterPath="$PROJECT_DIR$/src/Enemy4.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Enemy5.java" afterPath="$PROJECT_DIR$/src/Enemy5.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Game.java" afterPath="$PROJECT_DIR$/src/Game.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GameObject.java" afterPath="$PROJECT_DIR$/src/GameObject.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Handler.java" afterPath="$PROJECT_DIR$/src/Handler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ID.java" afterPath="$PROJECT_DIR$/src/ID.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/KeyInput.java" afterPath="$PROJECT_DIR$/src/KeyInput.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Lazer.java" afterPath="$PROJECT_DIR$/src/Lazer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Menu.java" afterPath="$PROJECT_DIR$/src/Menu.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Missile.java" afterPath="$PROJECT_DIR$/src/Missile.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/MusicBGM.java" afterPath="$PROJECT_DIR$/src/MusicBGM.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Player.java" afterPath="$PROJECT_DIR$/src/Player.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Stage.java" afterPath="$PROJECT_DIR$/src/Stage.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/img/[Originals]/header.png" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img/header.png" afterPath="$PROJECT_DIR$/img/header.png" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -39,18 +18,18 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="header.png" pinned="false" current-in-tab="false">
+      <file leaf-file-name="header.png" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/img/header.png">
           <provider selected="true" editor-type-id="images">
             <state />
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ID.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ID.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ID.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="418">
+              <caret line="19" column="31" lean-forward="true" selection-start-line="19" selection-start-column="31" selection-end-line="19" selection-end-column="31" />
               <folding />
             </state>
           </provider>
@@ -153,6 +132,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="game" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="game" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="img" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -523,12 +516,12 @@
       <option name="presentableId" value="Default" />
       <updated>1490204350404</updated>
       <workItem from="1490204359004" duration="630000" />
-      <workItem from="1490205014805" duration="1537000" />
+      <workItem from="1490205014805" duration="2154000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2167000" />
+    <option name="totallyTimeSpent" value="2784000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="3" width="1924" height="1035" extended-state="0" />
@@ -653,11 +646,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/img/header.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Menu.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="22">
@@ -692,10 +680,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ID.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="418">
+          <caret line="19" column="31" lean-forward="true" selection-start-line="19" selection-start-column="31" selection-end-line="19" selection-end-column="31" />
           <folding />
         </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/img/header.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
       </provider>
     </entry>
   </component>
