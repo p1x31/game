@@ -8,7 +8,7 @@ public class Stage {
 	private Handler handler;
 	public Stage(Handler handler){
 		this.handler = handler;
-		stage = 1;
+		stage = 0;
 	}
 	public int getStage() {
 		return stage;
@@ -17,6 +17,7 @@ public class Stage {
 		this.stage = stage;
 	}
 	public void nextStage(){
+		stage ++;
 		if (Menu.hardmode){
 			generateWave1(stage);
 			if(stage == 1) {
@@ -50,7 +51,7 @@ public class Stage {
 		}
 		}
 		System.out.println("Stage " + stage);
-		stage ++;
+
 	}
 
 
