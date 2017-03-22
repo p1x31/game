@@ -5,17 +5,11 @@ import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 import java.util.ArrayList;
 import java.util.LinkedList;
-
-
-
-
-
 // TODO: Auto-generated Javadoc
 /**
  * The Class Game.
  */
 public class Game extends Canvas implements Runnable{
-
 	/** The Constant serialVersionUID. */
 	//got this for serial warning suspression
 	private static final long serialVersionUID = 1649015221280660791L;
@@ -28,14 +22,12 @@ public class Game extends Canvas implements Runnable{
 	
 	/** The handler. */
 	private Handler handler;
-
 	
 	/** Check if the game is running. */
 	private boolean running = false;
 	
 	/** The thread. */
 	private Thread thread;
-
 	/**Enemy list*/
 	public ArrayList<Enemy> list;
 	
@@ -56,7 +48,6 @@ public class Game extends Canvas implements Runnable{
 		handler = new Handler();
 	}
 	
-
 	
 	/**
 	 * Stop.
@@ -101,7 +92,7 @@ public class Game extends Canvas implements Runnable{
                     	System.out.println("stop");
                     	render();
                     	waitTime++;
-                    	if (waitTime >= 250){
+                    	if (waitTime >= 30){
                     		state = GameState.Game;
                     		
                     		waitTime = 0;
@@ -199,15 +190,11 @@ public class Game extends Canvas implements Runnable{
 //		this.width = width;
 //		this.height = height;
 		handler = new Handler();
-
 		new Board(width, height, "TPA", this);
-
 //		Player player1 = new Player(width/4, height*11/16, ID.Player1,16);
 //		Player player2 = new Player(width*3/4, height*11/16, ID.Player2,16);
-
 //		this.addKeyListener(new KeyInput(handler));
 	}
-
 	public Handler getHandler(){
 		return this.handler;
 	}
@@ -223,7 +210,5 @@ public class Game extends Canvas implements Runnable{
 //		
 //	}
 	
-
 	
-
 }
