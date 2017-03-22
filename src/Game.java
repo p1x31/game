@@ -1,5 +1,6 @@
 import java.awt.Canvas;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 import java.util.ArrayList;
@@ -100,7 +101,7 @@ public class Game extends Canvas implements Runnable{
                     	System.out.println("stop");
                     	render();
                     	waitTime++;
-                    	if (waitTime >= 100){
+                    	if (waitTime >= 250){
                     		state = GameState.Game;
                     		
                     		waitTime = 0;
@@ -123,7 +124,12 @@ public class Game extends Canvas implements Runnable{
                     	System.out.println("FPS: "+ frames);
                     	frames = 0;
                     }
-                    
+                    if(state == GameState.Over){
+                    	render();
+                    	running = !running;
+                    	
+                    	stop();
+                    }
         }
                 stop();
     }
@@ -141,28 +147,30 @@ public class Game extends Canvas implements Runnable{
 		
 		g.setColor(Color.black);
 		g.fillRect(0, 0, width, height);
+		g.setFont(new Font("Arial", Font.BOLD, 24));
 		switch (state) {
 		case Game:
 			handler.render(g);
 			break;
 		case Stage:
 			g.setColor(Color.white);
-			g.fillRect(700, 400, 200, 200);
+			g.fillRect(700, 400, 150, 100);
 			g.setColor(Color.black);
-			g.drawString("Stage " + handler.getStage(), 800, 500);
+			
+			g.drawString("Stage " + handler.getStage(), 750, 450);
 		
 			break;
 		case Over:
 			g.setColor(Color.white);
 			g.fillRect(700, 400, 200, 200);
 			g.setColor(Color.black);
-			g.drawString("Game Over" , 800, 500);
+			g.drawString("Game Over" , 750, 450);
 			break;
 		case Pause:
 			g.setColor(Color.white);
 			g.fillRect(700, 400, 200, 200);
 			g.setColor(Color.black);
-			g.drawString("Paused" , 800, 500);
+			g.drawString("Paused" , 750, 450);
 			break;
 		default:
 			break;
