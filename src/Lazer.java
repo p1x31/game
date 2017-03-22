@@ -17,7 +17,6 @@ public class Lazer extends GameObject {
 	 *
 	 * @param x the x
 	 * @param y the y
-	 * @param size the size
 	 */
 	public Lazer(int x, int y, int width, int height) {
 		super(x, y, ID.PlayerProjectile, width, height, 1);
@@ -29,7 +28,7 @@ public class Lazer extends GameObject {
 	@Override
 	public void tick() {
 		temp ++; // counts how long the lazer lasts for
-		expired = temp > 10 ? true: false; // deletes the lazer after 10 frames
+		expired = temp > 10; // deletes the lazer after 10 frames
 	}
 
 	/* (non-Javadoc)
